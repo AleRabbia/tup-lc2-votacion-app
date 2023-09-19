@@ -3,6 +3,9 @@
 /* Estilos Generales */
 body {
   font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
 }
 
 p {
@@ -28,7 +31,7 @@ p {
   --grafica-amarillo: rgb(252, 210, 0);
   --grafica-amarillo-claro: rgba(252, 210, 0, 0.3);
   --grafica-celeste: rgb(0, 169, 232);
-  --grafica-celeste-claro: rgba(0, 169, 232, 0.3);
+  --grafica-celeste-claro: rgba(0, 169, 232, 0.1);
   --grafica-bordo: rgb(171, 40, 40);
   --grafica-bordo-claro: rgba(171, 40, 40, 0.3);
   --grafica-lila: rgb(112, 76, 159);
@@ -63,40 +66,176 @@ h3 {
 /* Iconos */
 /* Aquí deberías incluir la librería de iconos Awesome, como se indicó en tus instrucciones */
 
-/* Paleta de colores */
-:root {
-  --magenta: #ee3d8f;
-  --celeste: #37bbed;
-  /* ... (definir el resto de las variables de color) */
-}
-
 /* Cabecera */
 .header-page {
-  padding: 0.5em;
+  padding: 10px;
   background-color: var(--fondo-Cabecera);
   color: white;
-  width: 90%;
-  margin-top: 0;
-  margin-right: auto;
-  margin-bottom: auto;
-  margin-left: auto;
+  width: 100%;
+  height: 50px;
 }
 
 /* Barra de menú */
 ul {
-  margin-left: 13px;
-  margin-right: 13px;
-  padding-top: 20px;
+  margin: 0;
   background-color: var(--fondo-Menu);
-  width: 100%;
+  display: block;
+  height: 40px;
+  list-style-type: none;
+}
+
+ul li{
+  border: 1px solid var(--gris-claro);
+  border-radius: 150px;
+  margin-right: 100px;
+  padding: 4px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 8.5px;
+  font-size: 10.5px;
+  float: right;
+}
+a.active{
+  color: var(--gris-claro);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+#sec-titulo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content {
+  flex: 1;
+  margin: 20px;
+  max-width: 50%;
+}
+.content h2{
+  margin-bottom: 10px;
+}
+.image {
+  float: right;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 120px;
+  margin-right: 100px;
+}
+
+#sec-contenido {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.title-contenido {
+  text-align: left;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+h2, p {
+  margin: 0;
+}
+
+#sec-contenido {
+  display: grid;
+  grid-template-columns: 1fr; 
+  grid-template-rows: auto auto auto; 
+  gap: 20px; 
+  background-color: var(--grafica-celeste-claro);
+}
+
+.title-contenido {
+  grid-row: 1; 
+  text-align: left;
+  margin-left: 10px;
+}
+
+.buttons-contenido {
+  grid-row: 2; 
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.button-paso {
+  display: flex;
+  text-align: center;
+  background-color: var(--magenta);
+  margin-left: 10px;
+  align-items: center;
+  border-radius: 10px 10px 0 0;
+}
+.button-generales{  
+  display: flex;
+  text-align: center;
+  background-color: var(--celeste);
+  margin-right: 10px;
+  align-items: center;
+  border-radius: 10px 10px 0 0;
+}
+.button-generales p{
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: bold;
+  color: whitesmoke;
+}
+.button-paso p{text-decoration: none;
+  font-size: 22px;
+  font-weight: bold;
+  color: whitesmoke;
+}
+
+/* Logo */
+.logo {
+  width: 150px;
+}
+
+/* Pie de Página */
+footer {
+  color: var(--texto-footer);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--fondo-Footer);
+  padding: 10px;
+}
+
+footer img {
+  width: 120px;
+  margin-left: 5px;
+  margin-right: 5px;
+
+}
+
+footer p {
+  flex: 1; 
+  color: var(--texto-footer);
+}
+
+
+/* Acciones generales */
+/* Aquí deberías añadir los enlaces a las páginas correspondientes */
+/* Por ejemplo, .logo y los botones INICIO, PASO, GENERALES, INFORMES */
+
+/* Ejemplo de enlace */
+.logo {
+  /* Asumiendo que el logo tiene una clase 'logo' */
+  cursor: pointer;
+}
+
+.logo a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .barra {
-
   display: flex;
-  /*flex-direction: column;*/
-  /*flex-direction: column-reverse;*/
-  /*flex-direction: row;*/
+  flex-direction: column;
+  flex-direction: column-reverse;
+  flex-direction: row;
   /*flex-direction: row-reverse;*/
   /*flex-wrap: nowrap;*/
   /*flex-wrap: wrap;*/
@@ -118,34 +257,4 @@ ul {
 
   /*align-items: flex-end;
   justify-content: flex-end;*/
-}
-
-/* Logo */
-.logo {
-  width: 150px;
-}
-
-/* Pie de Página */
-footer {
-  background-color: var(--fondo-Footer);
-  color: var(--texto-footer);
-}
-
-footer img {
-  width: 40px;
-}
-
-/* Acciones generales */
-/* Aquí deberías añadir los enlaces a las páginas correspondientes */
-/* Por ejemplo, .logo y los botones INICIO, PASO, GENERALES, INFORMES */
-
-/* Ejemplo de enlace */
-.logo {
-  /* Asumiendo que el logo tiene una clase 'logo' */
-  cursor: pointer;
-}
-
-.logo a {
-  text-decoration: none;
-  color: inherit;
 }
