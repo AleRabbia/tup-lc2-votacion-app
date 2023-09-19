@@ -187,6 +187,13 @@ h2, p {
   font-weight: bold;
   color: whitesmoke;
 }
+a.button-generales{
+  text-decoration: none;
+}
+a.button-paso{
+  text-decoration: none;
+}
+
 
 /* Logo */
 .logo {
