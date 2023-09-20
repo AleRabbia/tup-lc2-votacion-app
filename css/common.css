@@ -265,3 +265,13 @@ footer p {
   /*align-items: flex-end;
   justify-content: flex-end;*/
 }
+
+ul li .desplegable-list{
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  height:30px;
+  padding: 5px;
+  color: var(--celeste);
+  font-weight: bold;
+}
