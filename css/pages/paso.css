@@ -73,8 +73,9 @@ h3 {
 }
 
 /* Barra de menú */
-ul {
+.menu-list {
     margin: 0;
+    padding: 0;
     background-color: var(--fondo-Menu);
     width: 100%;
     display: flex;
@@ -86,13 +87,12 @@ ul {
 
 ul li {
     margin-right: 5px;
-    margin-top: 12.5px;
-    font-size: 10.5px;
-
+    margin-top: 12px;
+    font-size: 12px;
 }
 
 .generales {
-    padding: 5px 10px;
+    padding: 5px;
     border-radius: 5px;
     color: whitesmoke;
     background-color: var(--celeste);
@@ -103,7 +103,7 @@ ul li {
 }
 
 .inicio {
-    padding: 5px 10px;
+    padding: 5px;
     border-radius: 5px;
     color: whitesmoke;
     background-color: var(--gris-claro);
@@ -114,7 +114,7 @@ ul li {
 }
 
 .informes {
-    padding: 5px 10px;
+    padding: 5px;
     border-radius: 10px;
     color: whitesmoke;
     text-decoration: none;
@@ -129,17 +129,62 @@ ul li {
     font-weight: bold;
     font-size: 14px;
     border: none;
-    padding: 5px;
 }
 
 .filter {
-    background-color: white;
+    background-color: #FFF;
     border: 1px solid var(--gris-claro);
     border-radius: 15px;
     color: var(--textos);
     padding: 5px;
+    text-transform: uppercase;
 }
 
+.clearfix{
+    clear: both;
+}
+
+#sec-messages {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    background: transparent;
+    text-align: center;
+    font-size: 12px;
+  }
+  
+  .mensajes{
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+    padding: 15px;
+    list-style-type: none;
+    width: 400px;
+    border-radius: 20px;
+  }
+  
+  .exito {
+    background-color: var(--mensaje-usuario-verde);
+    margin-bottom: 10px;
+    border-radius: 10px;
+  }
+  
+  .error {
+    background-color: var(--mensaje-usuario-rojo);
+    margin-bottom: 10px;
+    border-radius: 10px;
+  }
+  
+  .exclamacion {
+    background-color: var(--mensaje-usuario-amarillo);
+    margin-bottom: 10px;
+    border-radius: 10px;
+  }
+  
+  .exito p, .error p, .exclamacion p {
+    color: #FFffFF;
+    font-weight: 200;
+  }
 
 #sec-titulo {
     display: flex;
@@ -164,93 +209,6 @@ ul li {
     margin-left: 120px;
     margin-right: 100px;
 }
-
-#sec-contenido {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.title-contenido {
-    text-align: left;
-    margin-bottom: 20px;
-    margin-top: 10px;
-}
-
-h2,
-p {
-    margin: 0;
-}
-
-#sec-contenido {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
-    gap: 20px;
-    background-color: var(--grafica-celeste-claro);
-}
-
-.title-contenido {
-    grid-row: 1;
-    text-align: left;
-    margin-left: 10px;
-}
-
-.buttons-contenido {
-    grid-row: 2;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
-
-.button-paso {
-    display: flex;
-    text-align: center;
-    background-color: var(--magenta);
-    margin-left: 10px;
-    align-items: center;
-    border-radius: 10px;
-}
-
-a.button-paso:hover {
-    background-color: rgb(158, 38, 116);
-}
-
-.button-generales {
-    display: flex;
-    text-align: center;
-    background-color: var(--celeste);
-    margin-right: 10px;
-    align-items: center;
-    border-radius: 10px;
-}
-
-.button-generales:hover {
-    background-color: var(--fondo-Cabecera);
-}
-
-.button-generales p {
-    text-decoration: none;
-    font-size: 22px;
-    font-weight: bold;
-    color: whitesmoke;
-}
-
-.button-paso p {
-    text-decoration: none;
-    font-size: 22px;
-    font-weight: bold;
-    color: whitesmoke;
-}
-
-a.button-generales {
-    text-decoration: none;
-}
-
-a.button-paso {
-    text-decoration: none;
-}
-
 
 /* Logo */
 .logo {
