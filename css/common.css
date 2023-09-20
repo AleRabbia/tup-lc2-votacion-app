@@ -63,9 +63,6 @@ h3 {
   color: var(--titulos);
 }
 
-/* Iconos */
-/* Aquí deberías incluir la librería de iconos Awesome, como se indicó en tus instrucciones */
-
 /* Cabecera */
 .header-page {
   padding: 10px;
@@ -85,20 +82,55 @@ ul {
 }
 
 ul li{
-  border: 1px solid var(--gris-claro);
-  border-radius: 150px;
-  margin-right: 100px;
-  padding: 4px;
-  padding-left: 15px;
-  padding-right: 15px;
-  margin-top: 8.5px;
+  margin-right: 5px;
+  margin-top: 12.5px;
   font-size: 10.5px;
-  float: right;
+  float: left;
 }
-a.active{
+.consultar{
+  color: var(--gris-claro);
+  padding: 5px 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: none;
+}
+a.paso{
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: var(--magenta);
+  color: whitesmoke;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+}
+a.paso:hover{
+  background-color: rgb(158, 38, 116);
+}
+a.generales{
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: whitesmoke;
+  background-color: var(--celeste);
+  text-decoration: none;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+}
+a.generales:hover{
+  background-color: var(--fondo-Cabecera);
+}
+a.informes{
+  border: 1px solid var(--gris-claro);
+  border-radius: 5px;
+  padding: 5px 10px;
   color: var(--gris-claro);
   text-decoration: none;
   text-transform: uppercase;
+  cursor: pointer;
+}
+a.informes:hover{
+  background-color: #727272;
 }
 
 #sec-titulo {
@@ -166,7 +198,10 @@ h2, p {
   background-color: var(--magenta);
   margin-left: 10px;
   align-items: center;
-  border-radius: 10px 10px 0 0;
+  border-radius: 10px;
+}
+a.button-paso:hover{
+  background-color: rgb(158, 38, 116);
 }
 .button-generales{  
   display: flex;
@@ -174,7 +209,10 @@ h2, p {
   background-color: var(--celeste);
   margin-right: 10px;
   align-items: center;
-  border-radius: 10px 10px 0 0;
+  border-radius: 10px;
+}
+.button-generales:hover{
+  background-color: var(--fondo-Cabecera);
 }
 .button-generales p{
   text-decoration: none;
@@ -223,55 +261,10 @@ footer p {
 }
 
 
-/* Acciones generales */
-/* Aquí deberías añadir los enlaces a las páginas correspondientes */
-/* Por ejemplo, .logo y los botones INICIO, PASO, GENERALES, INFORMES */
-
-/* Ejemplo de enlace */
-.logo {
-  /* Asumiendo que el logo tiene una clase 'logo' */
-  cursor: pointer;
-}
-
 .logo a {
   text-decoration: none;
   color: inherit;
 }
 
-.barra {
-  display: flex;
-  flex-direction: column;
-  flex-direction: column-reverse;
-  flex-direction: row;
-  /*flex-direction: row-reverse;*/
-  /*flex-wrap: nowrap;*/
-  /*flex-wrap: wrap;*/
-  /*flex-wrap: wrap-reverse;*/
-  /*flex-flow: row-reverse wrap;*/
-  /*justify-content: flex-start;*/
-  /*justify-content: flex-end;*/
-  justify-content: center;
-  /*justify-content: space-around;*/
-  /*justify-content: space-between;*/
-  align-items: center;
-  /*align-items: flex-start;*/
-  /*align-items: flex-end;*/
-  /*align-items: stretch;*/
-  /*align-items: baseline;*/
 
-  /*justify-content: center;
-  align-items: center;*/
 
-  /*align-items: flex-end;
-  justify-content: flex-end;*/
-}
-
-ul li .desplegable-list{
-  background: transparent;
-  border: none;
-  font-size: 14px;
-  height:30px;
-  padding: 5px;
-  color: var(--celeste);
-  font-weight: bold;
-}

@@ -7,7 +7,7 @@
     <title>Sistema de Publicación de Resultados Electorales</title>
     <link rel="shortcut icon" type="image/png" href="favicon-16x16.png">
     <!-- Estilos CSS -->
-    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/pages/paso.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fontawesome/5.15.4/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -22,22 +22,14 @@
             </a>
         </div>
         <!--Barra de menú principal-->
-        <ul>
+        <ul class="menu-list">
             <li>
-                <a href="index.html" class="button-inicio">Inicio</a>
-            </li>
-            <li><a class="active" href="informes.html">Informes</a></li>
-            <!--<li><a href="#contact" width: 150px>Contacto</a></li>-->
-            <li>
-                <button>Filtrar</button>
-            </li>
-            <li>
-                <select name="distrito" id="distrito" class="desplegable-list">
-                    <option value="" selected>Distrito</option>
-                    <option value="">1</option>
-                    <option value="">2</option>
-                    <option value="">3</option>
-                    <option value="">4</option>
+                <select name="año" id="año" class="desplegable-list">
+                    <option value="" selected>Año</option>
+                    <option value="2023">2023</option>
+                    <option value="2019">2019</option>
+                    <option value="2015">2015</option>
+                    <option value="2011">2011</option>
                 </select>
             </li>
             <li>
@@ -50,25 +42,34 @@
                 </select>
             </li>
             <li>
-                <select name="año" id="año" class="desplegable-list">
-                    <option value="" selected>Año</option>
-                    <option value="2023">2023</option>
-                    <option value="2019">2019</option>
-                    <option value="2015">2015</option>
-                    <option value="2011">2011</option>
+                <select name="distrito" id="distrito" class="desplegable-list">
+                    <option value="" selected>Distrito</option>
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
                 </select>
             </li>
-
+            <li>
+                <button class="filter">Filtrar</button>
+            </li>
+            <li>
+                <a class="informes" href="informes.html">Informes</a>
+            </li>
+            <li>
+                <a class="generales" href="generales.html">Generales</a>
+            </li>
+            <li>
+                <a href="index.html" class="inicio">Inicio</a>
+            </li>
         </ul>
-
-
     </header>
     <!-- Contenido principal de la página -->
     <main>
         <section id="sec-titulo">
             <div class="">
-                <h2>Elecciones 2021 | Generales</h2>
-                <p></p>
+                <h2>Elecciones 2021 | PASO</h2>
+                <p class="texto-path">2020 > Generales > Provisorio > Senadores Nacionales > Buenos Aires</p>
             </div>
             <div class="image"></div>
         </section>
@@ -79,10 +80,17 @@
                 <a href="">+ Agregar a informe</a>
             </div>
             <div class="title-contenido">
-                <h2>Elecciones 2021</h2>
-                <p>Resultados Provisorios</p>
             </div>
-            <div style="background-color: blue;">
+            <div class="progress" style="background: var(--grafica-amarillo-claro);">
+                <div class="progress-bar" style="width:15%; background: var(--grafica-amarillo);">
+                     <span class="progress-bar-text">15%</span>
+                </div>
+            </div>
+            <div class="bar" style="--bar-value:85%;--bar-color:var(--grafica-amarillo);" data-name="Partido 1"
+                title="Your Blog 85%">
+            </div>
+
+            <div>
                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="841.889px" height="595.281px"
                     viewBox="0 0 841.889 595.281" enable-background="new 0 0 841.889 595.281" xml:space="preserve"
@@ -127,7 +135,7 @@
                     </g>
                 </svg>
             </div>
-            <div style="background-color: blue;">
+            <div>
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="841.889px" height="595.281px"
                     viewBox="0 0 841.889 595.281" enable-background="new 0 0 841.889 595.281" xml:space="preserve"
@@ -214,7 +222,7 @@
                     </path>
                 </svg>
             </div>
-            <div style="background-color: blue;">
+            <div>
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="841.889px" height="595.281px"
                     viewBox="0 0 841.889 595.281" enable-background="new 0 0 841.889 595.281" xml:space="preserve"
