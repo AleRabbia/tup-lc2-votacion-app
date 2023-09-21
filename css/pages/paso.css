@@ -140,7 +140,7 @@ ul li {
     text-transform: uppercase;
 }
 
-.clearfix{
+.clearfix {
     clear: both;
 }
 
@@ -151,9 +151,9 @@ ul li {
     background: transparent;
     text-align: center;
     font-size: 12px;
-  }
-  
-  .mensajes{
+}
+
+.mensajes {
     display: flex;
     flex-direction: column;
     margin: 20px auto;
@@ -161,30 +161,32 @@ ul li {
     list-style-type: none;
     width: 400px;
     border-radius: 20px;
-  }
-  
-  .exito {
+}
+
+.exito {
     background-color: var(--mensaje-usuario-verde);
     margin-bottom: 10px;
     border-radius: 10px;
-  }
-  
-  .error {
+}
+
+.error {
     background-color: var(--mensaje-usuario-rojo);
     margin-bottom: 10px;
     border-radius: 10px;
-  }
-  
-  .exclamacion {
+}
+
+.exclamacion {
     background-color: var(--mensaje-usuario-amarillo);
     margin-bottom: 10px;
     border-radius: 10px;
-  }
-  
-  .exito p, .error p, .exclamacion p {
+}
+
+.exito p,
+.error p,
+.exclamacion p {
     color: #FFffFF;
     font-weight: 200;
-  }
+}
 
 #sec-titulo {
     display: flex;
@@ -192,27 +194,114 @@ ul li {
     align-items: center;
 }
 
-.content {
-    flex: 1;
-    margin: 20px;
-    max-width: 50%;
+.texto-path {
+    font-size: 14px;
+    color: var(--celeste);
 }
 
-.content h2 {
-    margin-bottom: 10px;
-}
-
-.image {
-    float: right;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    margin-left: 120px;
-    margin-right: 100px;
-}
 
 /* Logo */
 .logo {
     width: 150px;
+}
+
+#sec-contenido {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    align-items: center;
+}
+#sec-contenido p{
+    color: white;
+    font-size: 14px;
+}
+
+.button-agr-informe{
+    background-color: var(--gris-claro);
+    text-align: center;
+    padding: 5px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    height: 20px;
+    margin-left: 10px;
+}
+a.informe{
+    text-decoration: none;
+    color: white;
+}
+.button-agr-informe:hover{
+    color: var(--textos);
+}
+
+.column {
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+}
+
+.column.mesas {
+    background-color: var(--celeste);
+    border-radius: 10px;
+}
+
+.column.electores {
+    background-color: var(--magenta);
+    border-radius: 10px;
+}
+
+.column.participacion {
+    background-color: var(--morado);
+    border-radius: 10px;
+}
+
+/*Section recuadros */
+.recuadros {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.cuadro {
+    border-radius: 25px;
+    border: 1px solid var(--borde-Grilla);
+    box-shadow: 
+        2px 2px 2px 1px rgba(0, 0, 0, 0.2),
+        -2px 2px 2px 1px rgba(0, 0, 0, 0.2),
+        2px -2px 2px 1px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 10px;
+    height: 325px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.recuadros h2 {
+    font-weight: bold;
+    padding: 1.8em 0 0 0;
+    white-space: nowrap;
+    font-size: 14px;
+}
+
+.partidos {
+    overflow-y: scroll;
+    font-size: 11px;
+    color: var(--textos);
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.provincia{
+    background-color: #ffffff;
+    color: #000000; 
+    align-items: center;
+    text-align: center;
 }
 
 /* Pie de Página */
