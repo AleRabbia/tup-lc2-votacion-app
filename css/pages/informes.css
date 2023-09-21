@@ -1,0 +1,149 @@
+#sec-messages {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+    font-size: 12px;
+}
+
+.mensajes {
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+    padding: 15px;
+    list-style-type: none;
+    width: 400px;
+    height: 150px;
+    border-radius: 20px;
+    background: transparent;
+}
+
+.exito {
+    background-color: var(--mensaje-usuario-verde);
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.error {
+    background-color: var(--mensaje-usuario-rojo);
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.exclamacion {
+    background-color: var(--mensaje-usuario-amarillo);
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.exito p,
+.error p,
+.exclamacion p {
+    color: #FFffFF;
+    font-weight: 200;
+    padding: 15px;
+}
+
+.clearfix {
+    clear: both;
+}
+
+
+/* Estilos de la grilla */
+.grilla {
+    width: 1024px;
+    margin: 0 auto 50px auto;
+    border-radius: 15px;
+    border: 1px solid var(--borde-Grilla);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgb(250, 250, 250);
+}
+
+thead {
+    text-align: center;
+}
+
+thead th {
+    color: var(--titulo-Grilla);
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--borde-inferior-Grilla);
+}
+
+tbody tr:hover {
+    background-color: rgb(250, 250, 250);
+}
+
+tbody td {
+    background-color: rgb(255, 255, 255);
+    border-bottom: 1px solid var(--borde-inferior-Grilla);
+    padding: 15px 0;
+    font-size: 12px;
+    vertical-align: top;
+    text-align: center;
+}
+tbody tr td{
+    font-weight: bold;
+}
+tbody tr td p{
+    color: var(--celeste);
+}
+
+.datos-generales {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 205px;
+}
+.datos-generales p{
+    color: white;
+    font-size: 14px;
+}
+
+.column {
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+}
+
+.column.mesas {
+    background-color: var(--celeste);
+    border-radius: 10px;
+}
+
+.column.electores {
+    background-color: var(--magenta);
+    border-radius: 10px;
+}
+
+.column.participacion {
+    background-color: var(--morado);
+    border-radius: 10px;
+}
+
+.agrupacion{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    padding-left: 10px;
+}
+
+.agrupacion p{
+    text-align: left;
+    color: #333;
+}
