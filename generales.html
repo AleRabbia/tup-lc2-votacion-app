@@ -8,7 +8,7 @@
     <link rel="shortcut icon" type="image/png" href="favicon-16x16.png">
     <!-- Estilos CSS -->
     <link rel="stylesheet" href="css/pages/general.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fontawesome/5.15.4/css/all.min.css"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
@@ -22,22 +22,14 @@
             </a>
         </div>
         <!--Barra de menú principal-->
-        <ul>
+        <ul class="menu-list">
             <li>
-                <a href="index.html" class="button-inicio">Inicio</a>
-            </li>
-            <li><a class="active" href="informes.html">Informes</a></li>
-            <!--<li><a href="#contact" width: 150px>Contacto</a></li>-->
-            <li>
-                <button>Filtrar</button>
-            </li>
-            <li>
-                <select name="distrito" id="distrito" class="desplegable-list">
-                    <option value="" selected>Distrito</option>
-                    <option value="">1</option>
-                    <option value="">2</option>
-                    <option value="">3</option>
-                    <option value="">4</option>
+                <select name="año" id="año" class="desplegable-list">
+                    <option value="" selected>Año</option>
+                    <option value="2023">2023</option>
+                    <option value="2019">2019</option>
+                    <option value="2015">2015</option>
+                    <option value="2011">2011</option>
                 </select>
             </li>
             <li>
@@ -50,39 +42,62 @@
                 </select>
             </li>
             <li>
-                <select name="año" id="año" class="desplegable-list">
-                    <option value="" selected>Año</option>
-                    <option value="2023">2023</option>
-                    <option value="2019">2019</option>
-                    <option value="2015">2015</option>
-                    <option value="2011">2011</option>
+                <select name="distrito" id="distrito" class="desplegable-list">
+                    <option value="" selected>Distrito</option>
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
                 </select>
             </li>
-
+            <li>
+                <button class="filter"><i class="fas fa-search"></i>Filtrar</button>
+            </li>
+            <li>
+                <a class="paso" href="paso.html">PASO</a>
+            </li>
+            <li>
+                <a class="informes" href="informes.html">Informes</a>
+            </li>
+            <li>
+                <a href="index.html" class="inicio">Inicio</a>
+            </li>
         </ul>
-
-
     </header>
     <!-- Contenido principal de la página -->
     <main>
+        <section id="sec-messages">
+            <ul class="mensajes">
+                <li class="exito">
+                    <p><i class="fas fa-thumbs-up"></i> Se agrego con exito el resultado del informe</p>
+                </li>
+                <li class="error">
+                    <p><i class="fas fa-exclamation-triangle"></i>Error: Se produjo un error al intentar agregar
+                        resultado al informe</p>
+                </li>
+                <li class="exclamacion">
+                    <p><i class="fas fa-exclamation"></i>La operacion no se pudo completar</p>
+                </li>
+            </ul>
+        </section>
+
+        <div class="clearfix"></div>
+
         <section id="sec-titulo">
             <div class="">
                 <h2>Elecciones 2021 | Generales</h2>
-                <p></p>
+                <p class="texto-path">2020 > Generales > Provisorio > Senadores Nacionales > Buenos Aires</p>
             </div>
             <div class="image"></div>
         </section>
-        <section id="sec-messages"></section>
+
         <section id="sec-contenido">
             <!-- Sección para contenido de la página -->
             <div class="button-agr-informe">
-                <a href="">+ Agregar a informe</a>
+                <a class="informe" href="">+ Agregar a informe</a>
             </div>
-            <div class="title-contenido">
-                <h2>Elecciones 2021</h2>
-                <p>Resultados Provisorios</p>
-            </div>
-            <div style="background-color: blue;">
+            <div class="column"></div>
+            <div class="column mesas">
                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="841.889px" height="595.281px"
                     viewBox="0 0 841.889 595.281" enable-background="new 0 0 841.889 595.281" xml:space="preserve"
@@ -126,13 +141,13 @@
                         </path>
                     </g>
                 </svg>
+                <p>Mesas Escrutadas 62.71%</p>
             </div>
-            <div style="background-color: blue;">
+            <div class="column electores">
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="841.889px" height="595.281px"
                     viewBox="0 0 841.889 595.281" enable-background="new 0 0 841.889 595.281" xml:space="preserve"
                     class="v-icon__component theme--light" style="font-size: 50px; height: 50px; width: 50px;">
-                    <title>comunidad</title>
                     <path fill="#FFFFFF"
                         d="M462.824,342.115h-0.59c-3.125-1.252-6.67-0.854-9.438,1.062c-10.771,7.341-23.424,11.436-36.453,11.797
                                                                     c-13.2-0.436-26.022-4.519-37.043-11.797c-2.89-1.642-6.43-1.642-9.319,0c-54.148,26.779-76.682,98.859-71.845,112.897
@@ -213,13 +228,13 @@
                                                                     c-0.238-0.571-0.797-0.944-1.416-0.944l0,0c-4.601,1.534-7.55-4.364-8.966-9.319c-2.595-10.027-1.18-14.864,0.473-17.105H180.521z">
                     </path>
                 </svg>
+                <p>Electores 62.71%</p>
             </div>
-            <div style="background-color: blue;">
+            <div class="column participacion">
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="841.889px" height="595.281px"
                     viewBox="0 0 841.889 595.281" enable-background="new 0 0 841.889 595.281" xml:space="preserve"
                     class="v-icon__component theme--light" style="font-size: 50px; height: 50px; width: 50px;">
-                    <title>participacion</title>
                     <path fill="#FFFFFF"
                         d="M508.832,212.347c-2.05-2.229-4.488-4.068-7.195-5.427c-2.793-1.033-5.824-1.238-8.73-0.59
                             c-1.705,0.26-3.37,0.735-4.955,1.416c-10.957,5.935-20.277,14.485-27.133,24.892c-4.26,6.344-10.35,11.24-17.46,14.038V116.909
@@ -267,8 +282,42 @@
                             C184.178,409.323,186.501,406.999,189.368,406.999z"></path>
                     <rect x="195.975" y="387.534" fill="#FFFFFF" width="69.013" height="14.393"></rect>
                 </svg>
-                </a>
+                <p>Participacion sobre escrutado 62.71%</p>
+            </div>
         </section>
+        <div class="clearfix"></div>
+        <section class="recuadros">
+            <div class="cuadro partidos">
+                <h2>Agrupaciones Politicas</h2>
+            </div>
+            <div class="cuadro provincia">
+                <h2>Santa Fe</h2>
+                <svg>
+                    <path class="leaflet-interactive" stroke="#18a0fb" stroke-opacity="1" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" fill="#18a0fb" fill-opacity="1"
+                        fill-rule="evenodd"
+                        d="M143 57L138 88L141 94L137 106L137 111L140 115L140 119L142 120L142 122L130 142L143 142L153 131L156 132L159 128L159 126L155 123L154 120L154 110L155 106L157 106L161 102L166 93L166 79L168 74L172 70L173 59L175 58L143 57z">
+                    </path>
+                </svg>
+            </div>
+            <div class="cuadro chart-wrap horizontal">
+                <div>
+                    <h2>Resumen de Votos</h2>
+                </div>
+                <div class="grid">
+                    <div class="bar" style="--bar-value:25%;" data-name="Partido 1" title="Your Blog 85%"></div>
+                    <div class="bar" style="--bar-value:23%;" data-name="Partido 2" title="Medium 23%"></div>
+                    <div class="bar" style="--bar-value:37%;" data-name="Partido 3" title="Tumblr 7%"></div>
+                    <div class="bar" style="--bar-value:58%;" data-name="Partido 4" title="Facebook 38%"></div>
+                    <div class="bar" style="--bar-value:65%;" data-name="Partido 5" title="YouTube 35%"></div>
+                    <div class="bar" style="--bar-value:30%;" data-name="Partido 6" title="LinkedIn 30%"></div>
+                    <div class="bar" style="--bar-value:45%;" data-name="Partido 7" title="Twitter 5%"></div>
+                    <div class="bar" style="--bar-value:21%;" data-name="Otros" title="Other 20%"></div>
+                </div>
+            </div>
+        </section>
+
+
     </main>
     <!--Pie de página-->
     <footer>

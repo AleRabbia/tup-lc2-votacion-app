@@ -246,6 +246,10 @@ footer {
   align-items: center;
   background-color: var(--fondo-Footer);
   padding: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 footer img {

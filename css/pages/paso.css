@@ -90,6 +90,12 @@ ul li {
     margin-top: 12px;
     font-size: 12px;
 }
+ul li button{
+    margin-right: 5px;
+    margin-top: 0;
+    font-size: 12px;
+    padding: 3px;
+}
 
 .generales {
     padding: 5px;
@@ -136,7 +142,6 @@ ul li {
     border: 1px solid var(--gris-claro);
     border-radius: 15px;
     color: var(--textos);
-    padding: 5px;
     text-transform: uppercase;
 }
 
@@ -210,6 +215,10 @@ ul li {
     grid-template-columns: repeat(5, 1fr);
     gap: 10px;
     align-items: center;
+    max-width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+
 }
 #sec-contenido p{
     color: white;
@@ -266,6 +275,9 @@ a.informe{
     gap: 10px;
     padding-top: 20px;
     padding-bottom: 20px;
+    max-width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .cuadro {
@@ -277,7 +289,7 @@ a.informe{
         2px -2px 2px 1px rgba(0, 0, 0, 0.2);
     text-align: center;
     padding: 10px;
-    height: 325px;
+    height: 375px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -355,7 +367,6 @@ footer p {
 }
 
 .chart-wrap {
-    --chart-width: 260px;
     --grid-color: #aaa;
     --bar-thickness: 25px;
     --bar-rounded: 3px;
@@ -387,8 +398,8 @@ footer p {
     margin-left: 50px;
     position: relative;
     padding: 5px 0 5px 0;
-    height: 100%;
-    width: 100%;
+    height: 60%;
+    width: 60%;
     border-left: 2px solid var(--grid-color);
     font-size: 10px;
 }
@@ -424,6 +435,35 @@ footer p {
     margin: var(--bar-spacing) 0;
     background-color: var(--bar-color);
     border-radius: 0 var(--bar-rounded) var(--bar-rounded) 0;
+}
+.bar:nth-child(1) {
+    --bar-color: #e4eb21;
+}
+
+.bar:nth-child(2) {
+    --bar-color: #731c7b;
+}
+
+.bar:nth-child(3) {
+    --bar-color: #cb3420;
+}
+.bar:nth-child(4) {
+    --bar-color: #30abdf;
+}
+
+.bar:nth-child(5) {
+    --bar-color: #ff00aa;
+}
+
+.bar:nth-child(6) {
+    --bar-color: #6e6c73;
+}
+.bar:nth-child(7) {
+    --bar-color: #31c78d;
+}
+
+.bar:nth-child(8) {
+    --bar-color: #602be8;
 }
 
 .chart-wrap .bar:hover {
