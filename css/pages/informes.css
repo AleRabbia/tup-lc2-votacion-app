@@ -1,3 +1,4 @@
+
 #sec-messages {
     display: flex;
     justify-content: center;
@@ -48,8 +49,20 @@
     clear: both;
 }
 
+.inicio {
+    padding: 5px;
+    border-radius: 5px;
+    color: whitesmoke;
+    background-color: var(--gris-claro);
+    text-decoration: none;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+}
 
 /* Estilos de la grilla */
+
+
 .grilla {
     width: 1024px;
     margin: 0 auto 50px auto;
