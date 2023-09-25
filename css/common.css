@@ -122,7 +122,7 @@ a.generales:hover{
 }
 a.informes{
   border: 1px solid var(--gris-claro);
-  border-radius: 5px;
+  border-radius: 15px;
   padding: 5px 10px;
   color: var(--gris-claro);
   text-decoration: none;
@@ -237,6 +237,12 @@ a.button-paso{
 .logo {
   width: 150px;
 }
+.logo a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
 
 /* Pie de Página */
 footer {
@@ -261,11 +267,6 @@ footer p {
   color: var(--texto-footer);
 }
 
-
-.logo a {
-  text-decoration: none;
-  color: inherit;
-}
 
 
 

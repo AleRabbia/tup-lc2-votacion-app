@@ -1,10 +1,17 @@
-
 #sec-messages {
     display: flex;
     justify-content: center;
     margin: auto;
     text-align: center;
     font-size: 12px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    /* Una columna que ocupa el espacio disponible y una columna para "Inicio" */
+    align-items: center;
+    /* Centra verticalmente los elementos */
 }
 
 .mensajes {
@@ -17,6 +24,13 @@
     height: 150px;
     border-radius: 20px;
     background: transparent;
+}
+
+.right {
+    margin-left: auto;
+    /* Esto enviará "Inicio" al lado derecho */
+    text-align: right;
+    /* Alinea el texto a la derecha */
 }
 
 .exito {
@@ -49,8 +63,24 @@
     clear: both;
 }
 
+ul {
+    background-color: var(--fondo-Menu);
+    list-style-type: none;
+    height: 40px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+li {
+    margin-right: 5px;
+    margin-top: 12.5px;
+    font-size: 10.5px;
+    float: left;
+}
+
 .inicio {
-    padding: 5px;
+    padding: 5px 10px;
     border-radius: 5px;
     color: whitesmoke;
     background-color: var(--gris-claro);
@@ -60,7 +90,17 @@
     cursor: pointer;
 }
 
-/* Estilos de la grilla */
+.inicio:hover {
+    background-color: #727272;
+}
+
+
+.right {
+    margin-left: auto;
+    /* Esto enviará "Inicio" al lado derecho */
+    text-align: right;
+    /* Alinea el texto a la derecha */
+}
 
 
 .grilla {
@@ -101,10 +141,12 @@ tbody td {
     vertical-align: top;
     text-align: center;
 }
-tbody tr td{
+
+tbody tr td {
     font-weight: bold;
 }
-tbody tr td p{
+
+tbody tr td p {
     color: var(--celeste);
 }
 
@@ -118,7 +160,8 @@ tbody tr td p{
     margin-right: auto;
     height: 225px;
 }
-.datos-generales p{
+
+.datos-generales p {
     color: white;
     font-size: 14px;
 }
@@ -149,14 +192,14 @@ tbody tr td p{
     border-radius: 10px;
 }
 
-.agrupacion{
+.agrupacion {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 5px;
     padding-left: 10px;
 }
 
-.agrupacion p{
+.agrupacion p {
     text-align: left;
     color: #333;
 }

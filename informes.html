@@ -5,10 +5,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sistema de Publicación de Resultados Electorales</title>
-    <link rel="shortcut icon" type="image/png" href="favicon-16x16.png">
+    <link rel="shortcut icon" type="image/png" href="img/icons/favicon-16x16.png">
     <!-- Estilos CSS -->
-    <link rel="stylesheet" href="css/pages/informes.css" />
+
     <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/pages/informes.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
 </head>
 
@@ -22,13 +23,16 @@
             </a>
         </div>
         <!--Barra de menú principal-->
-        <ul>
-            <li><a class="active consultar">Consultar:</a></li>
-            <li><a class="active paso" href="paso.html">PASO</a></li>
-            <li><a class="active generales" href="generales.html">Generales</a></li>
-            <li><a class="active inicio" href="index.html">Inicio</a></li>
-            <!--<li><a href="#contact" width: 150px>Contacto</a></li>-->
-        </ul>
+        <div class="conteiner">
+            <ul>
+                <li><a class="active consultar">Consultar:</a></li>
+                <li><a class="active paso" title="Ir a Pasos" href="paso.html">PASO</a></li>
+                <li><a class="active generales" title="Ir a Generales" href="generales.html">Generales</a></li>
+                <li class="right"><a class="active inicio" title="Ir a Inicio" href="index.html">Inicio</a></li>
+                <!--<li><a href="#contact" width: 150px>Contacto</a></li>-->
+            </ul>
+        </div>
+
 
 
     </header>
@@ -54,7 +58,7 @@
             <div class="titulo">
                 <h1>Reporte de Elecciones</h1>
             </div>
-            
+
             <div class="grilla">
                 <table>
                     <thead>
@@ -312,7 +316,8 @@
         <p>Resultados Provisorios en base a telegramas recibidos (Art. 43 Ley 26571 y Art. 105 Ley 19945). Los
             porcentajes de las agrupaciones políticas son calculados sobre los votos válidos (PASO) conforme al art. 45
             Ley 26.571 y afirmativos (Generales). No se incluyen los votos correspondientes a los electores residentes
-            en el exterior ni privados de la libertad. Al usar este sitio usted acepta los <a href="terminos.html" target="_blank">Términos y Condiciones</a>
+            en el exterior ni privados de la libertad. Al usar este sitio usted acepta los <a href="terminos.html"
+                title="Ir a Términos y Condiciones" target="_blank">Términos y Condiciones</a>
         </p>
     </footer>
 </body>

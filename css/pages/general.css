@@ -87,28 +87,35 @@ h3 {
 
 ul li {
     margin-right: 5px;
-    margin-top: 12px;
-    font-size: 12px;
+    margin-top: 12.5px;
+    font-size: 10.5px;
+    float: left;
 }
-ul li button{
+
+ul li button {
     margin-right: 5px;
     margin-top: 0;
     font-size: 12px;
     padding: 3px;
 }
-.paso {
-    padding: 5px;
+
+a.paso {
+    padding: 5px 10px;
     border-radius: 5px;
-    color: whitesmoke;
     background-color: var(--magenta);
+    color: whitesmoke;
     text-decoration: none;
     text-transform: uppercase;
     border: none;
     cursor: pointer;
 }
 
+a.paso:hover {
+    background-color: rgb(158, 38, 116);
+}
+
 .inicio {
-    padding: 5px;
+    padding: 5px 10px;
     border-radius: 5px;
     color: whitesmoke;
     background-color: var(--gris-claro);
@@ -118,14 +125,22 @@ ul li button{
     cursor: pointer;
 }
 
-.informes {
-    padding: 5px;
-    border-radius: 10px;
-    color: whitesmoke;
+.inicio:hover {
+    background-color: #727272;
+}
+
+a.informes {
+    border: 1px solid var(--gris-claro);
+    border-radius: 15px;
+    padding: 5px 10px;
+    color: var(--gris-claro);
     text-decoration: none;
     text-transform: uppercase;
-    border: 1px solid var(--gris-claro);
     cursor: pointer;
+}
+
+a.informes:hover {
+    background-color: #727272;
 }
 
 .desplegable-list {
@@ -134,6 +149,8 @@ ul li button{
     font-weight: bold;
     font-size: 14px;
     border: none;
+    width: 100px;
+    text-align: center;
 }
 
 .filter {
@@ -146,6 +163,13 @@ ul li button{
 
 .clearfix {
     clear: both;
+}
+
+.right {
+    margin-left: auto;
+    /* Esto enviará "Informes" al lado derecho */
+    text-align: right;
+    /* Para asegurarse de que el texto esté alineado a la derecha */
 }
 
 #sec-messages {
@@ -219,12 +243,13 @@ ul li button{
     margin-right: auto;
 
 }
-#sec-contenido p{
+
+#sec-contenido p {
     color: white;
     font-size: 14px;
 }
 
-.button-agr-informe{
+.button-agr-informe {
     background-color: var(--gris-claro);
     text-align: center;
     padding: 5px;
@@ -233,11 +258,13 @@ ul li button{
     height: 20px;
     margin-left: 10px;
 }
-a.informe{
+
+a.informe {
     text-decoration: none;
     color: white;
 }
-.button-agr-informe:hover{
+
+.button-agr-informe:hover {
     color: var(--textos);
 }
 
@@ -282,7 +309,7 @@ a.informe{
 .cuadro {
     border-radius: 25px;
     border: 1px solid var(--borde-Grilla);
-    box-shadow: 
+    box-shadow:
         2px 2px 2px 1px rgba(0, 0, 0, 0.2),
         -2px 2px 2px 1px rgba(0, 0, 0, 0.2),
         2px -2px 2px 1px rgba(0, 0, 0, 0.2);
@@ -308,9 +335,10 @@ a.informe{
     text-transform: uppercase;
     font-weight: bold;
 }
-.provincia{
+
+.provincia {
     background-color: #ffffff;
-    color: #000000; 
+    color: #000000;
     align-items: center;
     text-align: center;
 }
@@ -350,6 +378,7 @@ footer p {
     border-radius: 5px;
     margin-bottom: 15px;
 }
+
 .progress-bar {
     height: 100%;
     display: flex;
@@ -434,6 +463,7 @@ footer p {
     background-color: var(--bar-color);
     border-radius: 0 var(--bar-rounded) var(--bar-rounded) 0;
 }
+
 .bar:nth-child(1) {
     --bar-color: #e4eb21;
 }
@@ -445,6 +475,7 @@ footer p {
 .bar:nth-child(3) {
     --bar-color: #cb3420;
 }
+
 .bar:nth-child(4) {
     --bar-color: #30abdf;
 }
@@ -456,6 +487,7 @@ footer p {
 .bar:nth-child(6) {
     --bar-color: #6e6c73;
 }
+
 .bar:nth-child(7) {
     --bar-color: #31c78d;
 }
