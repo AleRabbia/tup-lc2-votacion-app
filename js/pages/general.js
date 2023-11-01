@@ -1,4 +1,4 @@
-const tipoEleccion = 0;
+const tipoEleccion = 1;
 const tipoRecuento = 1;
 const añoSelect = document.getElementById("año");
 
@@ -42,7 +42,7 @@ fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
                         console.log(data);
                         select.innerHTML = "";
 
-                        data[tipoEleccion].Cargos.forEach((cargo) => {
+                        data[0].Cargos.forEach((cargo) => {
                             const option = document.createElement("option");
                             option.value = cargo.IdCargo;
                             option.text = cargo.Cargo;
