@@ -83,23 +83,24 @@ h3 {
     justify-content: flex-start;
     height: 40px;
     list-style-type: none;
+    margin-right: 10px;
 }
 
 .menu-list li {
     display: flex;
     align-items: center; 
-    margin-right: 10px; 
     margin: 5px 0;
   }
 
 ul li {
-    margin-right: 10px;
+    margin-left: 10px;
     margin-top: 12.5px;
     font-size: 10.5px;
     float: left;
 }
 
 ul li button {
+    margin-left: 10px;    
     margin-right: 10px;
     margin-top: 0;
     font-size: 12px;
@@ -169,12 +170,10 @@ a.informes:hover {
 .clearfix {
     clear: both;
 }
-
-.right {
+.menu-list .right {
     margin-left: auto;
-    /* Esto enviará "Informes" al lado derecho */
+    
     text-align: right;
-    /* Para asegurarse de que el texto esté alineado a la derecha */
 }
 
 #sec-messages {
