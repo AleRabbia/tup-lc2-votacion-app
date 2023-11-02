@@ -82,7 +82,7 @@ ul {
 }
 
 ul li{
-  margin-right: 5px;
+  margin-right: 10px;
   margin-top: 12.5px;
   font-size: 10.5px;
   float: left;
@@ -95,9 +95,9 @@ ul li{
   border: none;
 }
 a.paso{
-  padding: 5px 10px;
+  padding: 5px 30px;
   border-radius: 5px;
-  background-color: var(--magenta);
+  background-color: var(--magenta);  
   color: whitesmoke;
   text-decoration: none;
   text-transform: uppercase;
@@ -110,7 +110,7 @@ a.paso:hover{
 a.generales{
   padding: 5px 10px;
   border-radius: 5px;
-  color: whitesmoke;
+  color: whitesmoke;  
   background-color: var(--celeste);
   text-decoration: none;
   text-transform: uppercase;
@@ -196,9 +196,10 @@ h2, p {
   display: flex;
   text-align: center;
   background-color: var(--magenta);
-  margin-left: 10px;
+  margin-left: 250px;
   align-items: center;
   border-radius: 10px;
+  width: 350px;
 }
 a.button-paso:hover{
   background-color: rgb(158, 38, 116);
@@ -207,9 +208,10 @@ a.button-paso:hover{
   display: flex;
   text-align: center;
   background-color: var(--celeste);
-  margin-right: 10px;
+  margin-right: 250px;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 10px;  
+  width: 350px;
 }
 .button-generales:hover{
   background-color: var(--fondo-Cabecera);
@@ -265,8 +267,16 @@ footer img {
 footer p {
   flex: 1; 
   color: var(--texto-footer);
+  line-height: 1.5;
+}
+footer a {
+  color: var(--texto-footer); 
+  text-decoration: underline;
 }
 
+footer a:hover {
+  color: var(--color-hover); 
+}
 
 
 

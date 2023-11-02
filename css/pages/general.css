@@ -85,22 +85,29 @@ h3 {
     list-style-type: none;
 }
 
+.menu-list li {
+    display: flex;
+    align-items: center; 
+    margin-right: 10px; 
+    margin: 5px 0;
+  }
+
 ul li {
-    margin-right: 5px;
+    margin-right: 10px;
     margin-top: 12.5px;
     font-size: 10.5px;
     float: left;
 }
 
 ul li button {
-    margin-right: 5px;
+    margin-right: px;
     margin-top: 0;
     font-size: 12px;
     padding: 3px;
 }
 
 a.paso {
-    padding: 5px 10px;
+    padding: 5px 30px;
     border-radius: 5px;
     background-color: var(--magenta);
     color: whitesmoke;
@@ -118,6 +125,7 @@ a.paso:hover {
     padding: 5px 10px;
     border-radius: 5px;
     color: whitesmoke;
+    margin-left: auto !important;
     background-color: var(--gris-claro);
     text-decoration: none;
     text-transform: uppercase;
@@ -154,6 +162,8 @@ a.informes:hover {
 }
 
 .filter {
+
+    font-size: 11.5px;
     background-color: #FFF;
     border: 1px solid var(--gris-claro);
     border-radius: 10px;
