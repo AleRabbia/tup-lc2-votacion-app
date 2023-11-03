@@ -1,6 +1,10 @@
-const tipoEleccion = 1;
+const tipoEleccion = 0;
 const tipoRecuento = 1;
 const añoSelect = document.getElementById("año");
+const idCargo = document.getElementById("cargo");
+const idDistrito = document.getElementById("distrito");
+const seccionSelect = document.getElementById("seccion");
+var datos = {};
 
 fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
     .then((response) => {
@@ -48,6 +52,7 @@ fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
                             option.text = cargo.Cargo;
                             select.appendChild(option);
                         });
+
                         const cargoSelect = document.getElementById("cargo");
 
                         cargoSelect.addEventListener("change", function () {
@@ -57,7 +62,7 @@ fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
 
                             const distritoSelect = document.getElementById("distrito");
                             distritoSelect.innerHTML = "";
-
+                            console.log(distritos)
                             distritos.forEach((distrito) => {
                                 const option = document.createElement("option");
                                 option.value = distrito.IdDistrito;
@@ -65,6 +70,42 @@ fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
                                 distritoSelect.appendChild(option);
                             });
                         });
+
+                        const distritoSelect = document.getElementById("distrito");
+
+                        distritoSelect.addEventListener("change", function () {
+                            const IdDistrito = distritoSelect.value;
+                            const idCargo = cargoSelect.value;
+                            const secciones = data[tipoEleccion].Cargos[idCargo].Distritos[IdDistrito].SeccionesProvinciales[0].Secciones;
+                            console.log(secciones)
+                            const seccionSelect = document.getElementById("seccion");
+                            seccionSelect.innerHTML = "";
+
+                            secciones.forEach((distrito) => {
+                                const option = document.createElement("option");
+                                option.value = distrito.IdSeccion;
+                                option.text = distrito.Seccion;
+                                seccionSelect.appendChild(option);
+                            });
+                        });
+
+                        seccionSelect.addEventListener("change", function(){
+                            datos = {
+                                anioEleccion: añoSelect.value,
+                                tipoRecuento: tipoRecuento,
+                                tipoEleccion: tipoEleccion,
+                                categoriaId: 2,
+                                distritoId: idDistrito.value,
+                                seccionProvincialId: 0,
+                                seccionId: seccionSelect.value,
+                                circuitoId: '',
+                                mesaId: '',
+                              };
+                              console.log(datos);
+                        });
+                        
+                        
+
                     })
                     .catch((error) => {
                         console.log(error);
@@ -75,3 +116,28 @@ fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
     .catch((error) => {
         console.log(error);
     });
+
+
+
+    function filtrarDatos() {
+
+        console.log(datos);
+
+        const fetchUrl = `https://resultados.mininterior.gob.ar/api/resultados/getResultados?anioEleccion=${datos.anioEleccion}&tipoRecuento=${datos.tipoRecuento}&tipoEleccion=${datos.tipoEleccion}&categoriaId=${datos.categoriaId}&distritoId=${datos.distritoId}&seccionProvincialId=${datos.seccionProvincialId}&seccionId=${datos.seccionId}&circuitoId=${datos.circuitoId}&mesaId=${datos.mesaId}`;
+      
+        fetch(fetchUrl)
+          .then((response) => {
+            if (response.ok) {
+              return response.json();
+            } else {
+              throw new Error('Error al obtener los datos');
+            }
+          })
+          .then((data) => {
+            console.log(data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+      
