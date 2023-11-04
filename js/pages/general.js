@@ -33,7 +33,6 @@ fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
 
                 fetch(apiUrl)
                     .then((response) => {
-                        console.log(response);
                         if (response.ok) {
                             return response.json();
 
@@ -42,26 +41,31 @@ fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
                         }
                     })
                     .then((data) => {
-                        const select = document.getElementById("cargo");
+                        const cargoSelect = document.getElementById("cargo");
                         console.log(data);
-                        select.innerHTML = "";
+                        while (cargoSelect.options.length > 1) {
+                            cargoSelect.remove(1);
+                        }
 
-                        data[0].Cargos.forEach((cargo) => {
+                        data[tipoEleccion].Cargos.forEach((cargo) => {
                             const option = document.createElement("option");
                             option.value = cargo.IdCargo;
                             option.text = cargo.Cargo;
-                            select.appendChild(option);
+                            cargoSelect.appendChild(option);
                         });
 
-                        const cargoSelect = document.getElementById("cargo");
+                        
 
                         cargoSelect.addEventListener("change", function () {
                             const idCargo = cargoSelect.value;
-
-                            const distritos = data[tipoEleccion].Cargos[idCargo].Distritos;
-
+                            const distritos = data[tipoEleccion].Cargos[idCargo - 1].Distritos;
+                            console.log(idCargo)
                             const distritoSelect = document.getElementById("distrito");
-                            distritoSelect.innerHTML = "";
+
+                            while (distritoSelect.options.length > 1) {
+                                cargoSelect.remove(1);
+                            }
+                            
                             console.log(distritos)
                             distritos.forEach((distrito) => {
                                 const option = document.createElement("option");
@@ -76,10 +80,12 @@ fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
                         distritoSelect.addEventListener("change", function () {
                             const IdDistrito = distritoSelect.value;
                             const idCargo = cargoSelect.value;
-                            const secciones = data[tipoEleccion].Cargos[idCargo].Distritos[IdDistrito].SeccionesProvinciales[0].Secciones;
+                            const secciones = data[tipoEleccion].Cargos[idCargo - 1].Distritos[IdDistrito].SeccionesProvinciales[0].Secciones;
                             console.log(secciones)
                             const seccionSelect = document.getElementById("seccion");
-                            seccionSelect.innerHTML = "";
+                            while (seccionSelect.options.length > 1) {
+                                cargoSelect.remove(1);
+                            }
 
                             secciones.forEach((distrito) => {
                                 const option = document.createElement("option");
@@ -89,7 +95,7 @@ fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
                             });
                         });
 
-                        seccionSelect.addEventListener("change", function(){
+                        /* seccionSelect.addEventListener("change", function(){
                             datos = {
                                 anioEleccion: añoSelect.value,
                                 tipoRecuento: tipoRecuento,
@@ -103,7 +109,7 @@ fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
                               };
                               console.log(datos);
                         });
-                        
+                         */
                         
 
                     })
