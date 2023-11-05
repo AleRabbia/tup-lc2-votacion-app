@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/pages/paso.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="js/pages/paso.js" refer></script>
 </head>
 
 <body>
@@ -25,42 +26,26 @@
         <ul class="menu-list">
             <li>
                 <select name="año" id="año" class="desplegable-list">
-                    <option value="" selected>Año</option>
-                    <option value="2023">2023</option>
-                    <option value="2019">2019</option>
-                    <option value="2015">2015</option>
-                    <option value="2011">2011</option>
+                    <option value="" selected >Año</option>
                 </select>
             </li>
             <li>
                 <select name="cargo" id="cargo" class="desplegable-list">
-                    <option value="" selected>Cargo</option>
-                    <option value="">1</option>
-                    <option value="">2</option>
-                    <option value="">3</option>
-                    <option value="">4</option>
+                    <option value="" disabled selected>Cargo</option>
                 </select>
             </li>
             <li>
                 <select name="distrito" id="distrito" class="desplegable-list">
-                    <option value="" selected>Distrito</option>
-                    <option value="">1</option>
-                    <option value="">2</option>
-                    <option value="">3</option>
-                    <option value="">4</option>
+                    <option value="" disabled selected>Distrito</option>
                 </select>
             </li>
             <li>
                 <select name="seccion" id="seccion" class="desplegable-list">
-                    <option value="" selected>Sección</option>
-                    <option value="">1</option>
-                    <option value="">2</option>
-                    <option value="">3</option>
-                    <option value="">4</option>
+                    <option value="" disabled selected>Sección</option>
                 </select>
             </li>
             <li>
-                <button class="filter"><i class="fas fa-search"></i>Filtrar</button>
+                <button class="filter" onclick="filtrarDatos()"><i class="fas fa-search"></i>Filtrar</button>
             </li>
             <li>
                 <a class="generales" title="Ir a Generales" href="generales.html">Generales</a>

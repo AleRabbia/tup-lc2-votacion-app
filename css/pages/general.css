@@ -88,7 +88,6 @@ h3 {
 .menu-list li {
     display: flex;
     align-items: center; 
-    margin-right: 10px; 
     margin: 5px 0;
   }
 
@@ -100,10 +99,24 @@ ul li {
 }
 
 ul li button {
-    margin-right: px;
+    margin-left: 10px;    
+    margin-right: 10px;
     margin-top: 0;
     font-size: 12px;
     padding: 3px;
+}
+
+#año {
+    width: 60px; /* Año */
+}
+#cargo {
+    width: 300px; /* Cargo */
+}
+#distrito {
+    width: 150px; /* Distrito */
+}
+#seccion {
+    width: 150px; /* Sección */
 }
 
 a.paso {
@@ -115,7 +128,9 @@ a.paso {
     text-transform: uppercase;
     border: none;
     cursor: pointer;
+    margin-right: 10px;
 }
+
 
 a.paso:hover {
     background-color: rgb(158, 38, 116);
@@ -125,7 +140,7 @@ a.paso:hover {
     padding: 5px 10px;
     border-radius: 5px;
     color: whitesmoke;
-    margin-left: auto !important;
+    margin-right: 10px;
     background-color: var(--gris-claro);
     text-decoration: none;
     text-transform: uppercase;
@@ -162,11 +177,9 @@ a.informes:hover {
 }
 
 .filter {
-
-    font-size: 11.5px;
     background-color: #FFF;
     border: 1px solid var(--gris-claro);
-    border-radius: 10px;
+    border-radius: 15px;
     color: var(--textos);
     text-transform: uppercase;
 }
@@ -175,11 +188,11 @@ a.informes:hover {
     clear: both;
 }
 
-.right {
+
+.menu-list .right {
     margin-left: auto;
-    /* Esto enviará "Informes" al lado derecho */
+    
     text-align: right;
-    /* Para asegurarse de que el texto esté alineado a la derecha */
 }
 
 #sec-messages {
@@ -352,7 +365,6 @@ a.informe {
     align-items: center;
     text-align: center;
 }
-
 /* Pie de Página */
 footer {
     color: var(--texto-footer);
@@ -361,26 +373,29 @@ footer {
     align-items: center;
     background-color: var(--fondo-Footer);
     padding: 10px;
-}
-
-footer img {
+    
+  }
+  
+  footer img {
     width: 120px;
     margin-left: 5px;
     margin-right: 5px;
-
-}
-
-footer p {
-    flex: 1;
+  
+  }
+  
+  footer p {
+    flex: 1; 
     color: var(--texto-footer);
-}
-
-
-.logo a {
-    text-decoration: none;
-    color: inherit;
-}
-
+    line-height: 1.5;
+  }
+  footer a {
+    color: var(--texto-footer); 
+    text-decoration: underline;
+  }
+  
+  footer a:hover {
+    color: var(--color-hover); 
+  }
 /*barra de progreso*/
 .progress {
     height: 35px;

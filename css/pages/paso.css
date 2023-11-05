@@ -106,12 +106,23 @@ ul li button {
     font-size: 12px;
     padding: 3px;
 }
-
-
+#año {
+    width: 60px; /* Año */
+}
+#cargo {
+    width: 300px; /* Cargo */
+}
+#distrito {
+    width: 150px; /* Distrito */
+}
+#seccion {
+    width: 150px; /* Sección */
+}
 a.generales {
-    padding: 5px 10px;
+    padding: 5px 14px;
     border-radius: 5px;
     color: whitesmoke;
+    margin-right: 10px;
     background-color: var(--celeste);
     text-decoration: none;
     text-transform: uppercase;
@@ -127,13 +138,16 @@ a.generales:hover {
     padding: 5px 10px;
     border-radius: 5px;
     color: whitesmoke;
+    margin-right: 10px;
     background-color: var(--gris-claro);
     text-decoration: none;
     text-transform: uppercase;
     border: none;
     cursor: pointer;
 }
-
+.inicio:hover {
+    background-color: #727272;
+}
 
 a.informes {
     border: 1px solid var(--gris-claro);
@@ -348,6 +362,7 @@ a.informe {
 }
 
 /* Pie de Página */
+/* Pie de Página */
 footer {
     color: var(--texto-footer);
     display: flex;
@@ -355,25 +370,29 @@ footer {
     align-items: center;
     background-color: var(--fondo-Footer);
     padding: 10px;
-}
-
-footer img {
+    
+  }
+  
+  footer img {
     width: 120px;
     margin-left: 5px;
     margin-right: 5px;
-
-}
-
-footer p {
-    flex: 1;
+  
+  }
+  
+  footer p {
+    flex: 1; 
     color: var(--texto-footer);
-}
-
-.logo a {
-    text-decoration: none;
-    color: inherit;
-}
-
+    line-height: 1.5;
+  }
+  footer a {
+    color: var(--texto-footer); 
+    text-decoration: underline;
+  }
+  
+  footer a:hover {
+    color: var(--color-hover); 
+  }
 /*barra de progreso*/
 .progress {
     height: 35px;
