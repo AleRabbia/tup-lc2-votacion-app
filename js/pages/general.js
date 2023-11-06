@@ -1,10 +1,20 @@
-const tipoEleccion = 0;
+const tipoEleccion = 1;
 const tipoRecuento = 1;
 const añoSelect = document.getElementById("año");
 const idCargo = document.getElementById("cargo");
 const idDistrito = document.getElementById("distrito");
 const seccionSelect = document.getElementById("seccion");
-var datos = {};
+const datos = {
+    anioEleccion: 0,
+    tipoRecuento: tipoRecuento,
+    tipoEleccion: tipoEleccion,
+    categoriaId: 2,
+    distritoId: 0,
+    seccionProvincialId: 0,
+    seccionId: 0,
+    circuitoId: '',
+    mesaId: '',
+};
 
 fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
     .then((response) => {
@@ -27,7 +37,7 @@ fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
 
         select.addEventListener("change", function () {
             const añoSeleccionado = select.value;
-
+            datos.anioEleccion = select.value;
             if (añoSeleccionado !== "") {
                 const apiUrl = "https://resultados.mininterior.gob.ar/api/menu?año=" + añoSeleccionado;
 
@@ -54,7 +64,7 @@ fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
                             cargoSelect.appendChild(option);
                         });
 
-                        
+
 
                         cargoSelect.addEventListener("change", function () {
                             const idCargo = cargoSelect.value;
@@ -65,13 +75,14 @@ fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
                             while (distritoSelect.options.length > 1) {
                                 cargoSelect.remove(1);
                             }
-                            
+
                             console.log(distritos)
                             distritos.forEach((distrito) => {
                                 const option = document.createElement("option");
                                 option.value = distrito.IdDistrito;
                                 option.text = distrito.Distrito;
                                 distritoSelect.appendChild(option);
+                                datos.distritoId = distrito.IdDistrito;
                             });
                         });
 
@@ -81,6 +92,7 @@ fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
                             const IdDistrito = distritoSelect.value;
                             const idCargo = cargoSelect.value;
                             const secciones = data[tipoEleccion].Cargos[idCargo - 1].Distritos[IdDistrito].SeccionesProvinciales[0].Secciones;
+                            datos.distritoId = distritoSelect.value;
                             console.log(secciones)
                             const seccionSelect = document.getElementById("seccion");
                             while (seccionSelect.options.length > 1) {
@@ -92,26 +104,15 @@ fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
                                 option.value = distrito.IdSeccion;
                                 option.text = distrito.Seccion;
                                 seccionSelect.appendChild(option);
+                                
                             });
                         });
 
-                        /* seccionSelect.addEventListener("change", function(){
-                            datos = {
-                                anioEleccion: añoSelect.value,
-                                tipoRecuento: tipoRecuento,
-                                tipoEleccion: tipoEleccion,
-                                categoriaId: 2,
-                                distritoId: idDistrito.value,
-                                seccionProvincialId: 0,
-                                seccionId: seccionSelect.value,
-                                circuitoId: '',
-                                mesaId: '',
-                              };
-                              console.log(datos);
+                        const seccionSelect = document.getElementById("seccion");
+                        seccionSelect.addEventListener("change", function () { 
+                            const idSeccion = seccionSelect.value
+                            datos.seccionId = idSeccion;
                         });
-                         */
-                        
-
                     })
                     .catch((error) => {
                         console.log(error);
@@ -123,27 +124,24 @@ fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
         console.log(error);
     });
 
+function filtrarDatos() {
 
+    console.log(datos);
 
-    function filtrarDatos() {
-
-        console.log(datos);
-
-        const fetchUrl = `https://resultados.mininterior.gob.ar/api/resultados/getResultados?anioEleccion=${datos.anioEleccion}&tipoRecuento=${datos.tipoRecuento}&tipoEleccion=${datos.tipoEleccion}&categoriaId=${datos.categoriaId}&distritoId=${datos.distritoId}&seccionProvincialId=${datos.seccionProvincialId}&seccionId=${datos.seccionId}&circuitoId=${datos.circuitoId}&mesaId=${datos.mesaId}`;
-      
-        fetch(fetchUrl)
-          .then((response) => {
+    const fetchUrl = `https://resultados.mininterior.gob.ar/api/resultados/getResultados?anioEleccion=${datos.anioEleccion}&tipoRecuento=${datos.tipoRecuento}&tipoEleccion=${datos.tipoEleccion}&categoriaId=${datos.categoriaId}&distritoId=${datos.distritoId}&seccionProvincialId=${datos.seccionProvincialId}&seccionId=${datos.seccionId}&circuitoId=${datos.circuitoId}&mesaId=${datos.mesaId}`;
+    console.log(fetchUrl)
+    fetch(fetchUrl)
+        .then((response) => {
             if (response.ok) {
-              return response.json();
+                return response.json();
             } else {
-              throw new Error('Error al obtener los datos');
+                throw new Error('Error al obtener los datos');
             }
-          })
-          .then((data) => {
+        })
+        .then((data) => {
             console.log(data);
-          })
-          .catch((error) => {
+        })
+        .catch((error) => {
             console.log(error);
-          });
-      }
-      
+        });
+}
