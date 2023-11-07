@@ -1,4 +1,4 @@
-const tipoEleccion = 1;
+const tipoEleccion = 0;
 const tipoRecuento = 1;
 var añoSelect = document.getElementById("año");
 var idCargo = document.getElementById("cargo");
@@ -39,7 +39,6 @@ fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
         console.log(error);
     });
 
-
 function cargaDatos() {
     idCargo = document.getElementById("cargo");
     idDistritoOpt = document.getElementById("distrito");
@@ -67,12 +66,17 @@ function cargaDatos() {
                 console.log(datosJSON)
 
 
-                datosJSON[tipoEleccion].Cargos.forEach((cargo) => {
-                    const option = document.createElement("option");
-                    option.value = cargo.IdCargo;
-                    option.text = cargo.Cargo;
-                    idCargo.appendChild(option);
-                });
+                datosJSON.forEach(eleccion => {
+                    if (eleccion.IdEleccion == tipoEleccion) {
+                        eleccion.Cargos.forEach((cargo) => {
+                            const option = document.createElement("option");
+                            option.value = cargo.IdCargo;
+                            option.text = cargo.Cargo;
+                            idCargo.appendChild(option);
+                        });
+                    }
+                })
+
             })
             .catch((error) => {
                 console.log(error);
@@ -105,13 +109,15 @@ function cargarSeccion() {
     const secciones = datosJSON[tipoEleccion].Cargos[idCargo - 1].Distritos[idDistritoOpt.value].SeccionesProvinciales[0].Secciones;
     datos.distritoId = idDistritoOpt.value;
     console.log(secciones)
-   
+
     secciones.forEach((distrito) => {
         const option = document.createElement("option");
         option.value = distrito.IdSeccion;
         option.text = distrito.Seccion;
         seccionSelect.appendChild(option);
     });
+
+
 }
 
 function filtrarDatos() {
