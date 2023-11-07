@@ -1,4 +1,4 @@
-const tipoEleccion = 0;
+const tipoEleccion = 2;
 const tipoRecuento = 1;
 var añoSelect = document.getElementById("año");
 var idCargo = document.getElementById("cargo");
