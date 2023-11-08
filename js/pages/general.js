@@ -11,7 +11,7 @@ const datos = {
     tipoEleccion: tipoEleccion,
     categoriaId: 2,
     distritoId: 0,
-    seccionProvincialId: 0,
+    seccionProvincialId: '',
     seccionId: 0,
     circuitoId: '',
     mesaId: '',
@@ -40,16 +40,11 @@ fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
     });
 
 function cargaDatos() {
-    idCargo = document.getElementById("cargo");
-    idDistritoOpt = document.getElementById("distrito");
-    seccionSelect = document.getElementById("seccion");
-    limpiarCargo(idCargo)
-    limpiarDistrito(idDistritoOpt)
-    limpiarSeccion(seccionSelect)
+    limpiarCargo();
+    limpiarDistrito();
+    limpiarSeccion();
+
     datos.anioEleccion = añoSelect.value;
-    console.log(datos.anioEleccion)
-
-
     if (datos.anioEleccion !== "") {
         const apiUrl = "https://resultados.mininterior.gob.ar/api/menu?año=" + datos.anioEleccion;
 
@@ -85,44 +80,61 @@ function cargaDatos() {
 }
 
 function cargarDistrito() {
-    idDistritoOpt = document.getElementById("distrito");
-    seccionSelect = document.getElementById("seccion");
-    limpiarDistrito(idDistritoOpt)
-    limpiarSeccion(seccionSelect)
+    limpiarDistrito();
+    limpiarSeccion();
     idCargo = document.getElementById("cargo").value;
-    console.log(idCargo)
-    const distritos = datosJSON[tipoEleccion].Cargos[idCargo - 1].Distritos;
 
-    console.log(distritos)
-    distritos.forEach((distrito) => {
-        const option = document.createElement("option");
-        option.value = distrito.IdDistrito;
-        option.text = distrito.Distrito;
-        idDistritoOpt.appendChild(option);
-    });
+    datosJSON.forEach(eleccion => {
+        if (eleccion.IdEleccion == tipoEleccion) {
+            eleccion.Cargos.forEach((cargo) => {
+                if (cargo.IdCargo == idCargo) {
+                    cargo.Distritos.forEach((distrito) => {
+                        const option = document.createElement("option");
+                        option.value = distrito.IdDistrito;
+                        option.text = distrito.Distrito;
+                        idDistritoOpt.appendChild(option);
+                    });
+                }
+            });
+        }
+    })
+
 }
 
 function cargarSeccion() {
-    seccionSelect = document.getElementById("seccion");
-    limpiarSeccion(seccionSelect)
+    limpiarSeccion()
+    datos.distritoId = document.getElementById("distrito").value;
 
-    const secciones = datosJSON[tipoEleccion].Cargos[idCargo - 1].Distritos[idDistritoOpt.value].SeccionesProvinciales[0].Secciones;
-    datos.distritoId = idDistritoOpt.value;
-    console.log(secciones)
-
-    secciones.forEach((distrito) => {
-        const option = document.createElement("option");
-        option.value = distrito.IdSeccion;
-        option.text = distrito.Seccion;
-        seccionSelect.appendChild(option);
-    });
-
-
+    datosJSON.forEach(eleccion => {
+        if (eleccion.IdEleccion == tipoEleccion) {
+            eleccion.Cargos.forEach((cargo) => {
+                if (cargo.IdCargo == idCargo) {
+                    cargo.Distritos.forEach((distrito) => {
+                        if (distrito.IdDistrito == datos.distritoId) {
+                            distrito.SeccionesProvinciales.forEach((seccionesProvinciales) => {
+                                seccionesProvinciales.Secciones.forEach((distrito) => {
+                                    const option = document.createElement("option");
+                                    option.value = distrito.IdSeccion;
+                                    option.text = distrito.Seccion;
+                                    seccionSelect.appendChild(option);
+                                });
+                            })
+                        }
+                    });
+                }
+            });
+        }
+    })    
 }
 
 function filtrarDatos() {
+    datos.seccionId = document.getElementById("seccion").value;
 
     console.log(datos);
+    //limpiarAño();
+    limpiarCargo();
+    limpiarDistrito();
+    limpiarSeccion();
 
     const fetchUrl = `https://resultados.mininterior.gob.ar/api/resultados/getResultados?anioEleccion=${datos.anioEleccion}&tipoRecuento=${datos.tipoRecuento}&tipoEleccion=${datos.tipoEleccion}&categoriaId=${datos.categoriaId}&distritoId=${datos.distritoId}&seccionProvincialId=${datos.seccionProvincialId}&seccionId=${datos.seccionId}&circuitoId=${datos.circuitoId}&mesaId=${datos.mesaId}`;
     console.log(fetchUrl)
@@ -143,13 +155,22 @@ function filtrarDatos() {
 }
 
 
+function limpiarAño() {
+    añoSelect = document.getElementById("año");
+    añoSelect.innerHTML = `<option disabled selected>Año</option>`;
+}
+function limpiarCargo() {
+    idCargo = document.getElementById("cargo");
+    idCargo.innerHTML = `<option disabled selected>Cargo</option>`;
+}
+function limpiarDistrito() {
+    idDistritoOpt = document.getElementById("distrito");
+    idDistritoOpt.innerHTML = `<option disabled selected>Distrito</option>`;
+}
+function limpiarSeccion() {
+    seccionSelect = document.getElementById("seccion");
+    seccionSelect.innerHTML = `<option disabled selected>Seccion</option>`;
+}
 
-function limpiarCargo(element) {
-    element.innerHTML = `<option disabled selected>Cargo</option>`;
-}
-function limpiarDistrito(element) {
-    element.innerHTML = `<option disabled selected>Distrito</option>`;
-}
-function limpiarSeccion(element) {
-    element.innerHTML = `<option disabled selected>Seccion</option>`;
-}
+
+
