@@ -5,6 +5,7 @@ var idCargo = document.getElementById("cargo");
 var idDistritoOpt = document.getElementById("distrito");
 var seccionSelect = document.getElementById("seccion");
 let datosJSON;
+let infoJSON;
 let idCargos;
 const datos = {
     anioEleccion: 0,
@@ -90,7 +91,7 @@ function cargarDistrito() {
 
     let cargoSeleccionado = idCargo.options[idCargo.selectedIndex];
     datos.cargoTxt = cargoSeleccionado.textContent;
-    
+
 
     datosJSON.forEach(eleccion => {
         if (eleccion.IdEleccion == tipoEleccion) {
@@ -148,7 +149,7 @@ function filtrarDatos() {
     limpiarCargo();
     limpiarDistrito();
     limpiarSeccion();
-    crearTitulo()
+    crearTitulo();
 
     const fetchUrl = `https://resultados.mininterior.gob.ar/api/resultados/getResultados?anioEleccion=${datos.anioEleccion}&tipoRecuento=${datos.tipoRecuento}&tipoEleccion=${datos.tipoEleccion}&categoriaId=${datos.categoriaId}&distritoId=${datos.distritoId}&seccionProvincialId=${datos.seccionProvincialId}&seccionId=${datos.seccionId}&circuitoId=${datos.circuitoId}&mesaId=${datos.mesaId}`;
     console.log(fetchUrl)
@@ -162,10 +163,15 @@ function filtrarDatos() {
         })
         .then((data) => {
             console.log(data);
+            console.log(data.estadoRecuento.participacionPorcentaje);
+            infoJSON = data;
+            console.log(infoJSON.estadoRecuento.mesasTotalizadas);
+            rellenarDatos();
         })
         .catch((error) => {
             console.log(error);
         });
+
 }
 function crearTitulo() {
 
@@ -178,6 +184,75 @@ function crearTitulo() {
 
 }
 
+function rellenarDatos() {
+    const mesa = document.getElementById("mesaEscrutada");
+    const electores = document.getElementById("electores");
+    const participacion = document.getElementById("participacion");
+    const barras = document.getElementById("grid");
+    let textomesa = infoJSON.estadoRecuento.mesasTotalizadas;
+    let textoelectores = infoJSON.estadoRecuento.cantidadElectores;
+    let textoparticipacion = String(infoJSON.estadoRecuento.participacionPorcentaje);
+    console.log(textoparticipacion);
+    mesa.textContent = `Mesas Escrutadas ${textomesa}`;
+    electores.textContent = `Electores ${textoelectores}`;
+    participacion.textContent = `Participacion sobre escrutado ${textoparticipacion}%`;
+    const colores = [
+        {
+          nombre: "--grafica-celeste",
+          color: "rgb(0, 169, 232)",
+          colorClaro: "rgba(0, 169, 232, 0.1)"
+        },
+        {
+          nombre: "--grafica-verde",
+          color: "rgb(52, 194, 82)",
+          colorClaro: "rgba(52, 194, 82, 0.1)"
+        },
+        {
+          nombre: "--grafica-amarillo",
+          color: "rgb(255, 207, 51)",
+          colorClaro: "rgba(255, 207, 51, 0.1)"
+        },
+        {
+          nombre: "--grafica-rosa",
+          color: "rgb(255, 105, 180)",
+          colorClaro: "rgba(255, 105, 180, 0.1)"
+        },
+        {
+          nombre: "--grafica-violeta",
+          color: "rgb(148, 0, 211)",
+          colorClaro: "rgba(148, 0, 211, 0.1)"
+        },
+        {
+          nombre: "--grafica-naranja",
+          color: "rgb(255, 165, 0)",
+          colorClaro: "rgba(255, 165, 0, 0.1)"
+        },
+        {
+          nombre: "--grafica-bordo",
+          color: "rgb(171, 40, 40)",
+          colorClaro: "rgba(171, 40, 40, 0.3)"
+        }
+      ];
+
+      let indice = 0;
+infoJSON.valoresTotalizadosPositivos.forEach(agrupacion => {    
+    const cuadros = document.getElementById("cuadro-partido");
+    const agrupaciones = `<div><p>${agrupacion.nombreAgrupacion}</p>
+                <p>${agrupacion.votosPorcentaje}%<br>${agrupacion.votos} votos</p>
+                <div class="progress" style="background: ${colores[indice].colorClaro};">
+                <div class="progress-bar" style="width:${agrupacion.votosPorcentaje}%; background: ${colores[indice].color};"> <span
+                class="progress-bar-text">${agrupacion.votosPorcentaje}%</span> </div>
+                </div></div>`;
+    cuadros.innerHTML += agrupaciones;
+    const bar = `<div class="bar" style="--bar-value:${agrupacion.votosPorcentaje}%;" data-name="${agrupacion.nombreAgrupacion}" title="${agrupacion.nombreAgrupacion} ${agrupacion.votosPorcentaje}%"></div>`;
+    barras.innerHTML += bar;
+    indice +=1;
+
+})
+
+
+/*<div class="bar" style="--bar-value:25%;" data-name="Partido 1" title="Your Blog 85%"></div>*/
+}
 
 function limpiarAño() {
     añoSelect = document.getElementById("año");
