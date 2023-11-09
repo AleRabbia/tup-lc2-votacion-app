@@ -339,9 +339,11 @@ a.informe {
     text-align: center;
     padding: 10px;
     height: 375px;
-    display: flex;
+    display: block;
     flex-direction: column;
     justify-content: space-around;
+    overflow-x: auto;
+    
 }
 
 .recuadros h2 {
@@ -357,6 +359,7 @@ a.informe {
     color: var(--textos);
     text-transform: uppercase;
     font-weight: bold;
+    display: block;
 }
 
 .provincia {
@@ -490,31 +493,31 @@ footer {
 }
 
 .bar:nth-child(1) {
-    --bar-color: #e4eb21;
+    --bar-color: rgb(0, 169, 232);
 }
 
 .bar:nth-child(2) {
-    --bar-color: #731c7b;
+    --bar-color: rgb(52, 194, 82);
 }
 
 .bar:nth-child(3) {
-    --bar-color: #cb3420;
+    --bar-color: rgb(255, 207, 51);
 }
 
 .bar:nth-child(4) {
-    --bar-color: #30abdf;
+    --bar-color: rgb(255, 105, 180);
 }
 
 .bar:nth-child(5) {
-    --bar-color: #ff00aa;
+    --bar-color:rgb(148, 0, 211);
 }
 
 .bar:nth-child(6) {
-    --bar-color: #6e6c73;
+    --bar-color: rgb(255, 165, 0);
 }
 
 .bar:nth-child(7) {
-    --bar-color: #31c78d;
+    --bar-color: rgb(171, 40, 40);
 }
 
 .bar:nth-child(8) {
