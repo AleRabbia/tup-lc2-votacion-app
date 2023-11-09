@@ -162,8 +162,8 @@ function filtrarDatos() {
             }
         })
         .then((data) => {
-            console.log(data);
             infoJSON = data;
+            console.log(infoJSON)
             rellenarDatos();
         })
         .catch((error) => {
@@ -192,7 +192,7 @@ function rellenarDatos() {
 
     let textomesa = infoJSON.estadoRecuento.mesasTotalizadas;
     let textoelectores = infoJSON.estadoRecuento.cantidadElectores;
-    let textoparticipacion = infoJSON.estadoRecuento.participacionPorcentaje
+    let textoparticipacion = infoJSON.estadoRecuento.participacionPorcentaje;
     let indice = 0;
 
     mesa.textContent = `Mesas Escrutadas ${textomesa}`;
@@ -201,7 +201,7 @@ function rellenarDatos() {
     tituloProv.textContent = `${datos.distritoTxt}`;
     mapas.innerHTML = provincias[datos.distritoId];
 
-    infoJSON.valoresTotalizadosPositivos.forEach((agrupacion, index) => {
+    infoJSON.valoresTotalizadosPositivos.forEach(agrupacion => {
         const cuadros = document.getElementById("cuadro-partido");
         const agrupaciones = `<div><p>${agrupacion.nombreAgrupacion}</p>
                 <p>${agrupacion.votosPorcentaje}%<br>${agrupacion.votos} votos</p>
@@ -212,8 +212,32 @@ function rellenarDatos() {
         cuadros.innerHTML += agrupaciones;
         const bar = `<div class="bar" style="--bar-value:${agrupacion.votosPorcentaje}%;" data-name="${agrupacion.nombreAgrupacion}" title="${agrupacion.nombreAgrupacion} ${agrupacion.votosPorcentaje}%"></div>`;
         barras.innerHTML += bar;
-        indice ++;
+        indice++;
     })
+}
+
+function agregarInforme() {
+
+    var dataInforme = {
+        año: datos.anioEleccion,
+        tipo: 'Generales',
+        recuento: 'Provisorio', 
+        cargo: datos.cargoTxt,
+        distrito: datos.distritoTxt,
+        seccion: datos.seccionTxt,
+        informe: infoJSON
+    };
+
+    console.log(dataInforme);
+
+   /*  if (Object.keys(infoJSON).length !== 0) {
+
+        var infoJSONString = JSON.stringify(infoJSON);
+        localStorage.setItem('dataInforme', infoJSONString);
+    } else {
+        console.error('infoJSON está vacío. No se guardará en localStorage.');
+    } */
+
 }
 
 function limpiarAño() {

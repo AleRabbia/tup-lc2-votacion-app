@@ -176,8 +176,8 @@ function crearTitulo() {
     const titulo = document.getElementById('titulo');
 
     titulo.innerHTML = `<div class="" id="titulo">
-    <h2>Elecciones ${datos.anioEleccion} | Generales</h2>
-    <p class="texto-path">${datos.anioEleccion} > Generales > Provisorio > ${datos.cargoTxt} > ${datos.distritoTxt} > ${datos.seccionTxt}</p>
+    <h2>Elecciones ${datos.anioEleccion} | PASO</h2>
+    <p class="texto-path">${datos.anioEleccion} > PASO > Provisorio > ${datos.cargoTxt} > ${datos.distritoTxt} > ${datos.seccionTxt}</p>
 </div>`
 
 }
