@@ -218,25 +218,41 @@ function rellenarDatos() {
 
 function agregarInforme() {
 
-    var dataInforme = {
-        año: datos.anioEleccion,
-        tipo: 'Generales',
-        recuento: 'Provisorio', 
-        cargo: datos.cargoTxt,
-        distrito: datos.distritoTxt,
-        seccion: datos.seccionTxt,
-        informe: infoJSON
-    };
+    if (Object.keys(infoJSON).length !== 0) {
 
-    console.log(dataInforme);
+        var dataInforme = {
+            año: datos.anioEleccion,
+            tipo: 'Generales',
+            recuento: 'Provisorio',
+            cargo: datos.cargoTxt,
+            distrito: datos.distritoTxt,
+            seccion: datos.seccionTxt,
+            informe: infoJSON
+        };
 
-   /*  if (Object.keys(infoJSON).length !== 0) {
-
-        var infoJSONString = JSON.stringify(infoJSON);
-        localStorage.setItem('dataInforme', infoJSONString);
+        var dataStorage = JSON.stringify(dataInforme);
     } else {
         console.error('infoJSON está vacío. No se guardará en localStorage.');
-    } */
+    }
+
+    var storageActual = localStorage.getItem('dataInforme');
+
+
+    if (storageActual != "") {
+        try {
+            if (storageActual == dataStorage) {
+                console.log('same data')
+            } else {
+                
+            }
+            var storageJSON = JSON.parse(storageActual);
+        } catch (error) {
+
+        }
+    } else {
+
+        localStorage.setItem('dataInforme', dataStorage);
+    }
 
 }
 
