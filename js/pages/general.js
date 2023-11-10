@@ -143,6 +143,7 @@ function filtrarDatos() {
     datos.seccionId = seccionSelect.value;
     let seccionSeleccionada = seccionSelect.options[seccionSelect.selectedIndex];
     datos.seccionTxt = seccionSeleccionada.textContent;
+    let mensajito;
 
     console.log(datos);
     //limpiarAño();
@@ -163,11 +164,15 @@ function filtrarDatos() {
         })
         .then((data) => {
             infoJSON = data;
-            console.log(infoJSON)
+            console.log(infoJSON);
             rellenarDatos();
+            mensajito = 'verde-informe';
+            crearMensaje(mensajito);
         })
         .catch((error) => {
             console.log(error);
+            mensajito = 'amarillo';
+            crearMensaje(mensajito);
         });
 
 }
@@ -181,6 +186,49 @@ function crearTitulo() {
 </div>`
 
 }
+
+function crearMensaje (mensajito) {
+
+    const colorMensaje = document.getElementById('color-mensaje');
+    const valorMensaje = document.getElementById('valor-mensaje');
+
+    if (mensajito == 'verde') {
+        colorMensaje.setAttribute('class','exito');
+        valorMensaje.setAttribute('class','fas fa-thumbs-up');
+        valorMensaje.innerText = 'Datos cargados correctamente';
+        setTimeout(function() {
+            colorMensaje.setAttribute('class', 'hidden');
+        },4000)
+    } 
+
+    if (mensajito == 'verde-informe') {
+        colorMensaje.setAttribute('class','exito');
+        valorMensaje.setAttribute('class','fas fa-thumbs-up');
+        valorMensaje.innerText = ' Se agrego con exito el resultado del informe';
+        setTimeout(function() {
+            colorMensaje.setAttribute('class', 'hidden');
+        },4000)
+    } 
+
+    if (mensajito == 'rojo') {
+        colorMensaje.setAttribute('class','error');
+        valorMensaje.setAttribute('class','fas fa-exclamation-triangle');
+        valorMensaje.innerText = 'Error: Se produjo un error al intentar agregar resultado al informe';
+        setTimeout(function() {
+            colorMensaje.setAttribute('class', 'hidden');
+        },4000)
+    } 
+
+    if (mensajito == 'amarillo') {
+        colorMensaje.setAttribute('class','exclamacion');
+        valorMensaje.setAttribute('class','fas fa-exclamation');
+        valorMensaje.innerText = 'La operacion no se pudo completar';
+        setTimeout(function() {
+            colorMensaje.setAttribute('class', 'hidden');
+        },4000)
+    } 
+}
+
 
 function rellenarDatos() {
     const mesa = document.getElementById("mesaEscrutada");

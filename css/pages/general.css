@@ -218,18 +218,25 @@ a.informes:hover {
     background-color: var(--mensaje-usuario-verde);
     margin-bottom: 10px;
     border-radius: 10px;
+    display: flex;
 }
 
 .error {
     background-color: var(--mensaje-usuario-rojo);
     margin-bottom: 10px;
     border-radius: 10px;
+    display: flex;
 }
 
 .exclamacion {
     background-color: var(--mensaje-usuario-amarillo);
     margin-bottom: 10px;
     border-radius: 10px;
+    display: flex;
+}
+
+.hidden {
+    display: none;
 }
 
 .exito p,

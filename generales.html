@@ -37,7 +37,7 @@
             </li>
             <li>
                 <select name="distrito" id="distrito" class="desplegable-list" onchange="cargarSeccion()">
-                    <option disabled selected>Distrito</option>
+                    <option value="0" disabled selected>Distrito</option>
                 </select>
             </li>
             <input type="hidden" id="hdSeccionProvincial" name="hdSeccionProvincial">
@@ -65,17 +65,10 @@
     <main>
         <section id="sec-messages">
             <ul class="mensajes">
-                <!-- <li class="exito">
-                    <p><i class="fas fa-thumbs-up"></i> Se agrego con exito el resultado del informe</p>
-                </li>
-                <li class="error">
-                    <p><i class="fas fa-exclamation-triangle"></i>Error: Se produjo un error al intentar agregar
-                        resultado al informe</p>
-                </li>
-                <li class="exclamacion">
-                    <p><i class="fas fa-exclamation"></i>La operacion no se pudo completar</p>
-                </li>-->
-            </ul>
+                    <li class="hidden" id="color-mensaje">
+                        <p><i id="valor-mensaje" class=""></i> </p>
+                    </li>
+                </ul>
         </section>
 
         <div class="clearfix"></div>
