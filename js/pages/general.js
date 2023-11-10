@@ -139,13 +139,47 @@ function cargarSeccion() {
     })
 }
 
+function mostrarLoader() {
+    // Muestra el GIF de carga
+    const loader = document.getElementById("loader");
+    loader.style.display = "block";
+}
+
+function ocultarLoader() {
+    // Oculta el GIF de carga
+    const loader = document.getElementById("loader");
+    loader.style.display = "none";
+}
+
+
 function filtrarDatos() {
+
+    
+    mostrarLoader();
+    console.log('Comienza la carga de datos... rueda gira')
     datos.seccionId = seccionSelect.value;
     let seccionSeleccionada = seccionSelect.options[seccionSelect.selectedIndex];
     datos.seccionTxt = seccionSeleccionada.textContent;
     let mensajito;
 
-    console.log(datos);
+       // Validación de combos 
+       if (
+        añoSelect.value === "" ||
+        idCargo.value === "Cargo" ||
+        idDistritoOpt.value === "Distrito" ||
+        seccionSelect.value === "Seccion"
+    ) {
+        
+        ocultarLoader();
+        mensajito = 'rojo';
+        console.log("Mensaje rojo activado: Campos de los selects vacíos detectados.");
+        crearMensaje(mensajito, "Seleccione todas las opciones antes de filtrar los datos.");
+        return; // Detener la ejecución si hay campos vacíos
+    }
+
+    console.log("Continuando con la ejecución...");
+
+    console.log(datos, añoSelect.value, idCargo.value, idDistritoOpt.value, seccionSelect.value );
     //limpiarAño();
     limpiarCargo();
     limpiarDistrito();
@@ -153,7 +187,8 @@ function filtrarDatos() {
     crearTitulo();
 
     const fetchUrl = `https://resultados.mininterior.gob.ar/api/resultados/getResultados?anioEleccion=${datos.anioEleccion}&tipoRecuento=${datos.tipoRecuento}&tipoEleccion=${datos.tipoEleccion}&categoriaId=${datos.categoriaId}&distritoId=${datos.distritoId}&seccionProvincialId=${datos.seccionProvincialId}&seccionId=${datos.seccionId}&circuitoId=${datos.circuitoId}&mesaId=${datos.mesaId}`;
-    console.log(fetchUrl)
+    console.log(fetchUrl);
+
     fetch(fetchUrl)
         .then((response) => {
             if (response.ok) {
@@ -165,17 +200,21 @@ function filtrarDatos() {
         .then((data) => {
             infoJSON = data;
             console.log(infoJSON);
+            ocultarLoader();
+            console.log('Datos cargados exitosamente.. se detiene la ruedita');
             rellenarDatos();
             mensajito = 'verde-informe';
-            crearMensaje(mensajito);
+            crearMensaje(mensajito,'Datos cargados correctamente');
         })
         .catch((error) => {
+            ocultarLoader();
             console.log(error);
             mensajito = 'amarillo';
-            crearMensaje(mensajito);
+            crearMensaje(mensajito,'La operacion no se pudo completar');
         });
-
 }
+
+
 function crearTitulo() {
 
     const titulo = document.getElementById('titulo');
@@ -187,46 +226,46 @@ function crearTitulo() {
 
 }
 
-function crearMensaje (mensajito) {
+function crearMensaje(mensajito,texto) {
 
     const colorMensaje = document.getElementById('color-mensaje');
     const valorMensaje = document.getElementById('valor-mensaje');
 
     if (mensajito == 'verde') {
-        colorMensaje.setAttribute('class','exito');
-        valorMensaje.setAttribute('class','fas fa-thumbs-up');
-        valorMensaje.innerText = 'Datos cargados correctamente';
-        setTimeout(function() {
+        colorMensaje.setAttribute('class', 'exito');
+        valorMensaje.setAttribute('class', 'fas fa-thumbs-up');
+        valorMensaje.innerText = texto; //'Datos cargados correctamente'
+        setTimeout(function () {
             colorMensaje.setAttribute('class', 'hidden');
-        },4000)
-    } 
+        }, 4000)
+    }
 
     if (mensajito == 'verde-informe') {
-        colorMensaje.setAttribute('class','exito');
-        valorMensaje.setAttribute('class','fas fa-thumbs-up');
-        valorMensaje.innerText = ' Se agrego con exito el resultado del informe';
-        setTimeout(function() {
+        colorMensaje.setAttribute('class', 'exito');
+        valorMensaje.setAttribute('class', 'fas fa-thumbs-up');
+        valorMensaje.innerText = texto; //'Se agrego con éxito el resultado del informe'
+        setTimeout(function () {
             colorMensaje.setAttribute('class', 'hidden');
-        },4000)
-    } 
+        }, 4000)
+    }
 
     if (mensajito == 'rojo') {
-        colorMensaje.setAttribute('class','error');
-        valorMensaje.setAttribute('class','fas fa-exclamation-triangle');
-        valorMensaje.innerText = 'Error: Se produjo un error al intentar agregar resultado al informe';
-        setTimeout(function() {
+        colorMensaje.setAttribute('class', 'error');
+        valorMensaje.setAttribute('class', 'fas fa-exclamation-triangle');
+        valorMensaje.innerText = texto;//'Error: Se produjo un error al intentar agregar resultado al informe';
+        setTimeout(function () {
             colorMensaje.setAttribute('class', 'hidden');
-        },4000)
-    } 
+        }, 4000)
+    }
 
     if (mensajito == 'amarillo') {
-        colorMensaje.setAttribute('class','exclamacion');
-        valorMensaje.setAttribute('class','fas fa-exclamation');
-        valorMensaje.innerText = 'La operacion no se pudo completar';
-        setTimeout(function() {
+        colorMensaje.setAttribute('class', 'exclamacion');
+        valorMensaje.setAttribute('class', 'fas fa-exclamation');
+        valorMensaje.innerText = texto; //'La operacion no se pudo completar'
+        setTimeout(function () {
             colorMensaje.setAttribute('class', 'hidden');
-        },4000)
-    } 
+        }, 4000)
+    }
 }
 
 
@@ -291,7 +330,7 @@ function agregarInforme() {
             if (storageActual == dataStorage) {
                 console.log('same data')
             } else {
-                
+
             }
             var storageJSON = JSON.parse(storageActual);
         } catch (error) {
