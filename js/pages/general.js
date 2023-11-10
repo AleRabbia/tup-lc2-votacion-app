@@ -22,6 +22,12 @@ const datos = {
     seccionTxt: ''
 };
 
+
+document.addEventListener("DOMContentLoaded", function() {
+    cargarFetch();
+  });
+
+function cargarFetch() {
 fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
     .then((response) => {
         if (response.ok) {
@@ -43,6 +49,7 @@ fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
     .catch((error) => {
         console.log(error);
     });
+}
 
 function cargaDatos() {
     limpiarCargo();
@@ -180,7 +187,7 @@ function filtrarDatos() {
     console.log("Continuando con la ejecución...");
 
     console.log(datos, añoSelect.value, idCargo.value, idDistritoOpt.value, seccionSelect.value );
-    //limpiarAño();
+    limpiarAño();
     limpiarCargo();
     limpiarDistrito();
     limpiarSeccion();
@@ -346,6 +353,7 @@ function agregarInforme() {
 function limpiarAño() {
     añoSelect = document.getElementById("año");
     añoSelect.innerHTML = `<option disabled selected>Año</option>`;
+    cargarFetch();
 }
 function limpiarCargo() {
     idCargo = document.getElementById("cargo");
