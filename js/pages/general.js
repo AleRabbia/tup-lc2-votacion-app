@@ -177,10 +177,10 @@ function filtrarDatos() {
         crearMensaje(mensajito, "Seleccione todas las opciones antes de filtrar los datos.");
         return; // Detener la ejecución si hay campos vacíos
     }
-    /* datos.seccionId = seccionSelect.value;
+    datos.seccionId = seccionSelect.value;
     let seccionSeleccionada = seccionSelect.options[seccionSelect.selectedIndex];
     datos.seccionTxt = seccionSeleccionada.textContent;
-    let mensajito; */
+    let mensajito;
 
     console.log(añoSelect.value)
     // Validación de combos 
