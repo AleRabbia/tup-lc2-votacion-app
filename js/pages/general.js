@@ -315,6 +315,7 @@ function rellenarDatos() {
 
 function agregarInforme() {
 
+    let storageActual;
     var arrayStorage = [];
 
     if (Object.keys(infoJSON).length !== 0) {
@@ -334,25 +335,29 @@ function agregarInforme() {
         console.error('infoJSON está vacío. No se guardará en localStorage.');
     }
 
-    let storageActual = localStorage.getItem('dataInforme');
+    if (localStorage.getItem("dataInforme")) {
+
+        storageActual = localStorage.getItem('dataInforme');
+        if (storageActual.length != 0) {
+            storageActual.forEach(elemento => {
+                if (elemento == dataStorage) {
+                    console.log("Los datos existen");
+                } else {
+                    console.log("Los datos no existen");
+                }
+            })
+        }
+    } else {
+        console.log("LocalStorage está vacío");
+        console.log("123");
+            arrayStorage.push(dataStorage);
+            localStorage.setItem('dataInforme', arrayStorage);
+    }
+
     console.log(storageActual)
 
 
-    if (storageActual.length != 0) {
-        storageActual.forEach(elemento => {
-            if (elemento == dataStorage) {
-                console.log("Los datos existen");
-            } else {
-                console.log("Los datos no existen");
-            }
-        })
-        
-    } else {
-        console.log("123");
-        arrayStorage.push(dataStorage);
-        localStorage.setItem('dataInforme', arrayStorage);
-        
-    }
+    
 
 }
 
