@@ -181,11 +181,11 @@ function filtrarDatos() {
     datos.seccionId = seccionSelect.value;
     let seccionSeleccionada = seccionSelect.options[seccionSelect.selectedIndex];
     datos.seccionTxt = seccionSeleccionada.textContent;
-    
+
 
     console.log(añoSelect.value)
     // Validación de combos 
-    
+
 
     console.log("Continuando con la ejecución...");
 
@@ -315,6 +315,8 @@ function rellenarDatos() {
 
 function agregarInforme() {
 
+    var arrayStorage = [];
+
     if (Object.keys(infoJSON).length !== 0) {
 
         var dataInforme = {
@@ -332,26 +334,34 @@ function agregarInforme() {
         console.error('infoJSON está vacío. No se guardará en localStorage.');
     }
 
-    var storageActual = localStorage.getItem('dataInforme');
+    let storageActual = localStorage.getItem('dataInforme');
+    console.log(storageActual)
 
 
-    if (storageActual != "") {
-        try {
-            if (storageActual == dataStorage) {
-                console.log('same data')
+    if (storageActual.length != 0) {
+        storageActual.forEach(elemento => {
+            if (elemento == dataStorage) {
+                console.log("Los datos existen");
             } else {
-
+                console.log("Los datos no existen");
             }
-            var storageJSON = JSON.parse(storageActual);
-        } catch (error) {
-
-        }
+        })
+        
     } else {
-
-        localStorage.setItem('dataInforme', dataStorage);
+        console.log("123");
+        arrayStorage.push(dataStorage);
+        localStorage.setItem('dataInforme', arrayStorage);
+        
     }
 
 }
+
+/* function elementExists(storageActual, dataStorage) {
+   if (storageActual.indexOf(dataStorage) !== -1) {
+    return false;
+   }
+   return true;
+} */
 
 function limpiarAño() {
     añoSelect = document.getElementById("año");
