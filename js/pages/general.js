@@ -23,32 +23,32 @@ const datos = {
 };
 
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     cargarFetch();
-  });
+});
 
 function cargarFetch() {
-fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
-    .then((response) => {
-        if (response.ok) {
-            return response.json();
-        } else {
-            throw new Error('Error al obtener los datos');
-        }
-    })
-    .then((data) => {
-        añoSelect = document.getElementById("año");
+    fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Error al obtener los datos');
+            }
+        })
+        .then((data) => {
+            añoSelect = document.getElementById("año");
 
-        data.forEach((year) => {
-            const option = document.createElement("option");
-            option.value = year;
-            option.text = year;
-            añoSelect.appendChild(option);
+            data.forEach((year) => {
+                const option = document.createElement("option");
+                option.value = year;
+                option.text = year;
+                añoSelect.appendChild(option);
+            });
+        })
+        .catch((error) => {
+            console.log(error);
         });
-    })
-    .catch((error) => {
-        console.log(error);
-    });
 }
 
 function cargaDatos() {
@@ -161,32 +161,34 @@ function ocultarLoader() {
 
 function filtrarDatos() {
 
-    
+
     mostrarLoader();
     console.log('Comienza la carga de datos... rueda gira')
-    datos.seccionId = seccionSelect.value;
-    let seccionSeleccionada = seccionSelect.options[seccionSelect.selectedIndex];
-    datos.seccionTxt = seccionSeleccionada.textContent;
-    let mensajito;
-
-       // Validación de combos 
-       if (
-        añoSelect.value === "" ||
-        idCargo.value === "Cargo" ||
-        idDistritoOpt.value === "Distrito" ||
-        seccionSelect.value === "Seccion"
+    if (
+        añoSelect.value == "0" ||
+        idCargo.value == "-1" ||
+        idDistritoOpt.value == "-1" ||
+        seccionSelect.value == "-1"
     ) {
-        
+
         ocultarLoader();
         mensajito = 'rojo';
         console.log("Mensaje rojo activado: Campos de los selects vacíos detectados.");
         crearMensaje(mensajito, "Seleccione todas las opciones antes de filtrar los datos.");
         return; // Detener la ejecución si hay campos vacíos
     }
+    /* datos.seccionId = seccionSelect.value;
+    let seccionSeleccionada = seccionSelect.options[seccionSelect.selectedIndex];
+    datos.seccionTxt = seccionSeleccionada.textContent;
+    let mensajito; */
+
+    console.log(añoSelect.value)
+    // Validación de combos 
+    
 
     console.log("Continuando con la ejecución...");
 
-    console.log(datos, añoSelect.value, idCargo.value, idDistritoOpt.value, seccionSelect.value );
+    console.log(datos, añoSelect.value, idCargo.value, idDistritoOpt.value, seccionSelect.value);
     limpiarAño();
     limpiarCargo();
     limpiarDistrito();
@@ -211,13 +213,13 @@ function filtrarDatos() {
             console.log('Datos cargados exitosamente.. se detiene la ruedita');
             rellenarDatos();
             mensajito = 'verde-informe';
-            crearMensaje(mensajito,'Datos cargados correctamente');
+            crearMensaje(mensajito, 'Datos cargados correctamente');
         })
         .catch((error) => {
             ocultarLoader();
             console.log(error);
             mensajito = 'amarillo';
-            crearMensaje(mensajito,'La operacion no se pudo completar');
+            crearMensaje(mensajito, 'La operacion no se pudo completar');
         });
 }
 
@@ -233,7 +235,7 @@ function crearTitulo() {
 
 }
 
-function crearMensaje(mensajito,texto) {
+function crearMensaje(mensajito, texto) {
 
     const colorMensaje = document.getElementById('color-mensaje');
     const valorMensaje = document.getElementById('valor-mensaje');
