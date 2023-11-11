@@ -314,68 +314,81 @@ function rellenarDatos() {
 }
 
 function agregarInforme() {
+    try {
+        if (Object.keys(infoJSON).length !== 0) {
 
-    if (Object.keys(infoJSON).length !== 0) {
+            var dataInforme = {
+                año: datos.anioEleccion,
+                tipo: 'Generales',
+                recuento: 'Provisorio',
+                cargo: datos.cargoTxt,
+                distrito: datos.distritoTxt,
+                seccion: datos.seccionTxt,
+                informe: infoJSON
+            };
+        } else {
+            console.error('infoJSON está vacío. No se guardará en localStorage.');
 
-        var dataInforme = {
-            año: datos.anioEleccion,
-            tipo: 'Generales',
-            recuento: 'Provisorio',
-            cargo: datos.cargoTxt,
-            distrito: datos.distritoTxt,
-            seccion: datos.seccionTxt,
-            informe: infoJSON
-        };
-    } else {
-        console.error('infoJSON está vacío. No se guardará en localStorage.');
-    }
+            mensajito = 'rojo';
+            crearMensaje(mensajito, 'No se guardará el informe vacío');
+        }
 
-    var storageActual = localStorage.getItem('dataInforme');
-    console.log(storageActual);
+        var storageActual = localStorage.getItem('dataInforme');
+        console.log(storageActual);
 
-    if (storageActual) {
-        
-        var existente = JSON.parse(storageActual);
-        var existe = false;
+        if (storageActual) {
 
-        for (var i = 0; i < existente.length; i++) {
-            if (JSON.stringify(existente[i]) === JSON.stringify(dataInforme)) {
-              existe = true;
-              break;
+            var existente = JSON.parse(storageActual);
+            var existe = false;
+
+            for (var i = 0; i < existente.length; i++) {
+                if (JSON.stringify(existente[i]) === JSON.stringify(dataInforme)) {
+                    existe = true;
+                    break;
+                }
             }
-          }
 
-          if (!existe) {
-            existente.push(dataInforme);
-      
-            // Guardar el objeto actualizado en el localStorage
-            localStorage.setItem('dataInforme', JSON.stringify(existente));
-            console.log('JSON agregado correctamente.');
-          } else {
-            console.log('El JSON ya existe, no se puede agregar.');
-          }
-    } else {
-        localStorage.setItem('dataInforme', JSON.stringify([dataInforme]));
-      console.log('Primer JSON guardado correctamente.');
+            if (!existe) {
+                existente.push(dataInforme);
+
+                // Guardar el objeto actualizado en el localStorage
+                localStorage.setItem('dataInforme', JSON.stringify(existente));
+                console.log('JSON agregado correctamente.');
+                mensajito = 'verde-informe';
+                crearMensaje(mensajito, 'Informe cargado correctamente');
+            } else {
+
+                mensajito = 'amarillo';
+                crearMensaje(mensajito, 'El informe ya existe');
+                console.log('El JSON ya existe, no se puede agregar.');
+            }
+        } else {
+            localStorage.setItem('dataInforme', JSON.stringify([dataInforme]));
+            console.log('Primer JSON guardado correctamente.');
+            mensajito = 'verde-informe';
+            crearMensaje(mensajito, 'Informe cargado correctamente');
+        }
+    } catch (error) {
+        console.error('Se produjo un error:', error);
+        mensajito = 'rojo';
+        crearMensaje(mensajito, 'No se guardará el informe vacío');
     }
 }
 
-
-function limpiarAño() {
-    añoSelect = document.getElementById("año");
-    añoSelect.innerHTML = `<option disabled selected>Año</option>`;
-    cargarFetch();
-}
-function limpiarCargo() {
-    idCargo = document.getElementById("cargo");
-    idCargo.innerHTML = `<option disabled selected>Cargo</option>`;
-}
-function limpiarDistrito() {
-    idDistritoOpt = document.getElementById("distrito");
-    idDistritoOpt.innerHTML = `<option disabled selected>Distrito</option>`;
-}
-function limpiarSeccion() {
-    seccionSelect = document.getElementById("seccion");
-    seccionSelect.innerHTML = `<option disabled selected>Seccion</option>`;
-}
-
+    function limpiarAño() {
+        añoSelect = document.getElementById("año");
+        añoSelect.innerHTML = `<option disabled selected>Año</option>`;
+        cargarFetch();
+    }
+    function limpiarCargo() {
+        idCargo = document.getElementById("cargo");
+        idCargo.innerHTML = `<option disabled selected>Cargo</option>`;
+    }
+    function limpiarDistrito() {
+        idDistritoOpt = document.getElementById("distrito");
+        idDistritoOpt.innerHTML = `<option disabled selected>Distrito</option>`;
+    }
+    function limpiarSeccion() {
+        seccionSelect = document.getElementById("seccion");
+        seccionSelect.innerHTML = `<option disabled selected>Seccion</option>`;
+    }
