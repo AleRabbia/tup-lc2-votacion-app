@@ -179,6 +179,8 @@ a.informes:hover {
     border-radius: 15px;
     color: var(--textos);
     text-transform: uppercase;
+    cursor: pointer;
+
 }
 
 .clearfix {
