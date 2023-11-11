@@ -22,28 +22,32 @@ const datos = {
     seccionTxt: ''
 };
 
-fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
-    .then((response) => {
-        if (response.ok) {
-            return response.json();
-        } else {
-            throw new Error('Error al obtener los datos');
-        }
-    })
-    .then((data) => {
-        añoSelect = document.getElementById("año");
+document.addEventListener("DOMContentLoaded", function () {
+    cargarFetch();
+});
+function cargarFetch() {
+    fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Error al obtener los datos');
+            }
+        })
+        .then((data) => {
+            añoSelect = document.getElementById("año");
 
-        data.forEach((year) => {
-            const option = document.createElement("option");
-            option.value = year;
-            option.text = year;
-            añoSelect.appendChild(option);
+            data.forEach((year) => {
+                const option = document.createElement("option");
+                option.value = year;
+                option.text = year;
+                añoSelect.appendChild(option);
+            });
+        })
+        .catch((error) => {
+            console.log(error);
         });
-    })
-    .catch((error) => {
-        console.log(error);
-    });
-
+}
 function cargaDatos() {
     limpiarCargo();
     limpiarDistrito();
@@ -139,10 +143,46 @@ function cargarSeccion() {
     })
 }
 
+function mostrarLoader() {
+    // Muestra el GIF de carga
+    const loader = document.getElementById("loader");
+    loader.style.display = "block";
+}
+
+function ocultarLoader() {
+    // Oculta el GIF de carga
+    const loader = document.getElementById("loader");
+    loader.style.display = "none";
+}
+
 function filtrarDatos() {
+
+    seccionSelect = document.getElementById("seccion");
+    mostrarLoader();
+    let mensajito;
+    console.log('Comienza la carga de datos... rueda gira')
+    if (
+        añoSelect.value == "0" ||
+        idCargo.value == "Cargo" ||
+        idDistritoOpt.value == "Distrito" ||
+        seccionSelect.value == "Seccion"
+    ) {
+
+        ocultarLoader();
+        mensajito = 'rojo';
+        console.log("Mensaje rojo activado: Campos de los selects vacíos detectados.");
+        crearMensaje(mensajito, "Seleccione todas las opciones antes de filtrar los datos.");
+        return; // Detener la ejecución si hay campos vacíos
+    }
     datos.seccionId = seccionSelect.value;
     let seccionSeleccionada = seccionSelect.options[seccionSelect.selectedIndex];
     datos.seccionTxt = seccionSeleccionada.textContent;
+    
+
+    console.log(añoSelect.value)
+    // Validación de combos 
+
+    console.log("Continuando con la ejecución...");
 
     console.log(datos);
     //limpiarAño();
@@ -162,12 +202,19 @@ function filtrarDatos() {
             }
         })
         .then((data) => {
-            console.log(data);
             infoJSON = data;
+            console.log(infoJSON);
+            ocultarLoader();
+            console.log('Datos cargados exitosamente.. se detiene la ruedita');
             rellenarDatos();
+            mensajito = 'verde-informe';
+            crearMensaje(mensajito, 'Datos cargados correctamente');
         })
         .catch((error) => {
+            ocultarLoader();
             console.log(error);
+            mensajito = 'amarillo';
+            crearMensaje(mensajito, 'La operacion no se pudo completar');
         });
 
 }
@@ -180,6 +227,48 @@ function crearTitulo() {
     <p class="texto-path">${datos.anioEleccion} > PASO > Provisorio > ${datos.cargoTxt} > ${datos.distritoTxt} > ${datos.seccionTxt}</p>
 </div>`
 
+}
+
+function crearMensaje(mensajito, texto) {
+
+    const colorMensaje = document.getElementById('color-mensaje');
+    const valorMensaje = document.getElementById('valor-mensaje');
+
+    if (mensajito == 'verde') {
+        colorMensaje.setAttribute('class', 'exito');
+        valorMensaje.setAttribute('class', 'fas fa-thumbs-up');
+        valorMensaje.innerText = texto; //'Datos cargados correctamente'
+        setTimeout(function () {
+            colorMensaje.setAttribute('class', 'hidden');
+        }, 4000)
+    }
+
+    if (mensajito == 'verde-informe') {
+        colorMensaje.setAttribute('class', 'exito');
+        valorMensaje.setAttribute('class', 'fas fa-thumbs-up');
+        valorMensaje.innerText = texto; //'Se agrego con éxito el resultado del informe'
+        setTimeout(function () {
+            colorMensaje.setAttribute('class', 'hidden');
+        }, 4000)
+    }
+
+    if (mensajito == 'rojo') {
+        colorMensaje.setAttribute('class', 'error');
+        valorMensaje.setAttribute('class', 'fas fa-exclamation-triangle');
+        valorMensaje.innerText = texto;//'Error: Se produjo un error al intentar agregar resultado al informe';
+        setTimeout(function () {
+            colorMensaje.setAttribute('class', 'hidden');
+        }, 4000)
+    }
+
+    if (mensajito == 'amarillo') {
+        colorMensaje.setAttribute('class', 'exclamacion');
+        valorMensaje.setAttribute('class', 'fas fa-exclamation');
+        valorMensaje.innerText = texto; //'La operacion no se pudo completar'
+        setTimeout(function () {
+            colorMensaje.setAttribute('class', 'hidden');
+        }, 4000)
+    }
 }
 
 function rellenarDatos() {

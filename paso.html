@@ -27,7 +27,7 @@
         <ul class="menu-list">
             <li>
                 <select name="año" id="año" class="desplegable-list" onchange="cargaDatos()">
-                    <option selected >Año</option>
+                    <option value="0" disabled selected >Año</option>
                 </select>
             </li>
             <li>
@@ -64,18 +64,14 @@
     <main>
         <section id="sec-messages">
             <ul class="mensajes">
-                <li class="exito">
-                    <p><i class="fas fa-thumbs-up"></i> Se agrego con exito el resultado del informe</p>
-                </li>
-                <!--<li class="error">
-                    <p><i class="fas fa-exclamation-triangle"></i>Error: Se produjo un error al intentar agregar
-                        resultado al informe</p>
-                </li>
-                <li class="exclamacion">
-                    <p><i class="fas fa-exclamation"></i>La operacion no se pudo completar</p>
-                </li>-->
-            </ul>
+                    <li class="hidden" id="color-mensaje">
+                        <p><i id="valor-mensaje" class=""></i> </p>
+                    </li>
+                </ul>
         </section>
+        <div id="loader">
+            <img width="100px" height="100px" display = "none" src="img/loading-12.gif" alt="Loading...">
+        </div>
 
         <div class="clearfix"></div>
 

@@ -215,18 +215,25 @@ a.informes:hover {
     background-color: var(--mensaje-usuario-verde);
     margin-bottom: 10px;
     border-radius: 10px;
+    display: flex;
 }
 
 .error {
     background-color: var(--mensaje-usuario-rojo);
     margin-bottom: 10px;
     border-radius: 10px;
+    display: flex;
 }
 
 .exclamacion {
     background-color: var(--mensaje-usuario-amarillo);
     margin-bottom: 10px;
     border-radius: 10px;
+    display: flex;
+}
+
+.hidden {
+    display: none;
 }
 
 .exito p,
@@ -583,3 +590,15 @@ footer {
     display: inline-block;
     white-space: nowrap;
 }
+
+#loader  {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    background: transparent;
+    text-align: center;
+    font-size: 12px;
+}
+#loader {
+    display: none; /* Inicialmente, el loader está oculto */
+  }
