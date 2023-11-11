@@ -203,3 +203,8 @@ tbody tr td p {
     text-align: left;
     color: #333;
 }
+
+.hidden {
+    margin: 0;
+    display: none;
+}

@@ -310,6 +310,69 @@ function rellenarDatos() {
     })
 }
 
+function agregarInforme() {
+    try {
+        if (Object.keys(infoJSON).length !== 0) {
+
+            var dataInforme = {
+                año: datos.anioEleccion,
+                tipo: 'PASO',
+                recuento: 'Provisorio',
+                cargo: datos.cargoTxt,
+                distrito: datos.distritoTxt,
+                seccion: datos.seccionTxt,
+                distritoId: datos.distritoId,
+                informe: infoJSON
+            };
+        } else {
+            console.error('infoJSON está vacío. No se guardará en localStorage.');
+
+            mensajito = 'rojo';
+            crearMensaje(mensajito, 'No se guardará el informe vacío');
+        }
+
+        var storageActual = localStorage.getItem('dataInforme');
+        console.log(storageActual);
+
+        if (storageActual) {
+
+            var existente = JSON.parse(storageActual);
+            var existe = false;
+
+            for (var i = 0; i < existente.length; i++) {
+                if (JSON.stringify(existente[i]) === JSON.stringify(dataInforme)) {
+                    existe = true;
+                    break;
+                }
+            }
+
+            if (!existe) {
+                existente.push(dataInforme);
+
+                // Guardar el objeto actualizado en el localStorage
+                localStorage.setItem('dataInforme', JSON.stringify(existente));
+                console.log('JSON agregado correctamente.');
+                mensajito = 'verde-informe';
+                crearMensaje(mensajito, 'Informe cargado correctamente');
+            } else {
+
+                mensajito = 'amarillo';
+                crearMensaje(mensajito, 'El informe ya existe');
+                console.log('El JSON ya existe, no se puede agregar.');
+            }
+        } else {
+            localStorage.setItem('dataInforme', JSON.stringify([dataInforme]));
+            console.log('Primer JSON guardado correctamente.');
+            mensajito = 'verde-informe';
+            crearMensaje(mensajito, 'Informe cargado correctamente');
+        }
+    } catch (error) {
+        console.error('Se produjo un error:', error);
+        mensajito = 'rojo';
+        crearMensaje(mensajito, 'No se guardará el informe vacío');
+    }
+}
+
 function limpiarAño() {
     añoSelect = document.getElementById("año");
     añoSelect.innerHTML = `<option disabled selected>Año</option>`;

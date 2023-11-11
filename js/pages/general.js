@@ -27,16 +27,12 @@ document.addEventListener("DOMContentLoaded", function () {
     cargarFetch();
 });
 
-function cargarFetch() {
-    fetch("https://resultados.mininterior.gob.ar/api/menu/periodos")
-        .then((response) => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error('Error al obtener los datos');
-            }
-        })
-        .then((data) => {
+async function cargarFetch() {
+    try {
+        const response = await fetch("https://resultados.mininterior.gob.ar/api/menu/periodos");
+
+        if (response.ok) {
+            const data = await response.json();
             añoSelect = document.getElementById("año");
 
             data.forEach((year) => {
@@ -45,13 +41,15 @@ function cargarFetch() {
                 option.text = year;
                 añoSelect.appendChild(option);
             });
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+        } else {
+            throw new Error('Error al obtener los datos');
+        }
+    } catch (error) {
+        console.log(error);
+    }
 }
 
-function cargaDatos() {
+async function cargaDatos() {
     limpiarCargo();
     limpiarDistrito();
     limpiarSeccion();
@@ -60,18 +58,13 @@ function cargaDatos() {
     if (datos.anioEleccion !== "") {
         const apiUrl = "https://resultados.mininterior.gob.ar/api/menu?año=" + datos.anioEleccion;
 
-        fetch(apiUrl)
-            .then((response) => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error('Error al obtener los datos');
-                }
-            })
-            .then((data) => {
-                datosJSON = data;
-                console.log(datosJSON)
+        try {
+            const response = await fetch(apiUrl);
 
+            if (response.ok) {
+                const data = await response.json();
+                datosJSON = data;
+                console.log(datosJSON);
 
                 datosJSON.forEach(eleccion => {
                     if (eleccion.IdEleccion == tipoEleccion) {
@@ -82,12 +75,13 @@ function cargaDatos() {
                             idCargo.appendChild(option);
                         });
                     }
-                })
-
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+                });
+            } else {
+                throw new Error('Error al obtener los datos');
+            }
+        } catch (error) {
+            console.log(error);
+        }
     }
 }
 
@@ -159,34 +153,30 @@ function ocultarLoader() {
 }
 
 
-function filtrarDatos() {
-
+async function filtrarDatos() {
     seccionSelect = document.getElementById("seccion");
     mostrarLoader();
     let mensajito;
-    console.log('Comienza la carga de datos... rueda gira')
+    console.log('Comienza la carga de datos... rueda gira');
+
     if (
         añoSelect.value == "0" ||
         idCargo.value == "Cargo" ||
         idDistritoOpt.value == "Distrito" ||
         seccionSelect.value == "Seccion"
     ) {
-
         ocultarLoader();
         mensajito = 'rojo';
         console.log("Mensaje rojo activado: Campos de los selects vacíos detectados.");
         crearMensaje(mensajito, "Seleccione todas las opciones antes de filtrar los datos.");
         return; // Detener la ejecución si hay campos vacíos
     }
+
     datos.seccionId = seccionSelect.value;
     let seccionSeleccionada = seccionSelect.options[seccionSelect.selectedIndex];
     datos.seccionTxt = seccionSeleccionada.textContent;
 
-
-    console.log(añoSelect.value)
-    // Validación de combos 
-
-
+    console.log(añoSelect.value);
     console.log("Continuando con la ejecución...");
 
     console.log(datos, añoSelect.value, idCargo.value, idDistritoOpt.value, seccionSelect.value);
@@ -199,15 +189,11 @@ function filtrarDatos() {
     const fetchUrl = `https://resultados.mininterior.gob.ar/api/resultados/getResultados?anioEleccion=${datos.anioEleccion}&tipoRecuento=${datos.tipoRecuento}&tipoEleccion=${datos.tipoEleccion}&categoriaId=${datos.categoriaId}&distritoId=${datos.distritoId}&seccionProvincialId=${datos.seccionProvincialId}&seccionId=${datos.seccionId}&circuitoId=${datos.circuitoId}&mesaId=${datos.mesaId}`;
     console.log(fetchUrl);
 
-    fetch(fetchUrl)
-        .then((response) => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error('Error al obtener los datos');
-            }
-        })
-        .then((data) => {
+    try {
+        const response = await fetch(fetchUrl);
+
+        if (response.ok) {
+            const data = await response.json();
             infoJSON = data;
             console.log(infoJSON);
             ocultarLoader();
@@ -215,13 +201,15 @@ function filtrarDatos() {
             rellenarDatos();
             mensajito = 'verde-informe';
             crearMensaje(mensajito, 'Datos cargados correctamente');
-        })
-        .catch((error) => {
-            ocultarLoader();
-            console.log(error);
-            mensajito = 'amarillo';
-            crearMensaje(mensajito, 'La operacion no se pudo completar');
-        });
+        } else {
+            throw new Error('Error al obtener los datos');
+        }
+    } catch (error) {
+        ocultarLoader();
+        console.log(error);
+        mensajito = 'amarillo';
+        crearMensaje(mensajito, 'La operación no se pudo completar');
+    }
 }
 
 
@@ -324,6 +312,7 @@ function agregarInforme() {
                 cargo: datos.cargoTxt,
                 distrito: datos.distritoTxt,
                 seccion: datos.seccionTxt,
+                distritoId: parseInt(datos.distritoId),
                 informe: infoJSON
             };
         } else {
