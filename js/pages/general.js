@@ -315,9 +315,6 @@ function rellenarDatos() {
 
 function agregarInforme() {
 
-    let storageActual;
-    var arrayStorage = [];
-
     if (Object.keys(infoJSON).length !== 0) {
 
         var dataInforme = {
@@ -329,44 +326,40 @@ function agregarInforme() {
             seccion: datos.seccionTxt,
             informe: infoJSON
         };
-
-        var dataStorage = JSON.stringify(dataInforme);
     } else {
         console.error('infoJSON está vacío. No se guardará en localStorage.');
     }
 
-    if (localStorage.getItem("dataInforme")) {
+    var storageActual = localStorage.getItem('dataInforme');
+    console.log(storageActual);
 
-        storageActual = localStorage.getItem('dataInforme');
-        if (storageActual.length != 0) {
-            storageActual.forEach(elemento => {
-                if (elemento == dataStorage) {
-                    console.log("Los datos existen");
-                } else {
-                    console.log("Los datos no existen");
-                }
-            })
-        }
+    if (storageActual) {
+        
+        var existente = JSON.parse(storageActual);
+        var existe = false;
+
+        for (var i = 0; i < existente.length; i++) {
+            if (JSON.stringify(existente[i]) === JSON.stringify(dataInforme)) {
+              existe = true;
+              break;
+            }
+          }
+
+          if (!existe) {
+            existente.push(dataInforme);
+      
+            // Guardar el objeto actualizado en el localStorage
+            localStorage.setItem('dataInforme', JSON.stringify(existente));
+            console.log('JSON agregado correctamente.');
+          } else {
+            console.log('El JSON ya existe, no se puede agregar.');
+          }
     } else {
-        console.log("LocalStorage está vacío");
-        console.log("123");
-            arrayStorage.push(dataStorage);
-            localStorage.setItem('dataInforme', arrayStorage);
+        localStorage.setItem('dataInforme', JSON.stringify([dataInforme]));
+      console.log('Primer JSON guardado correctamente.');
     }
-
-    console.log(storageActual)
-
-
-    
-
 }
 
-/* function elementExists(storageActual, dataStorage) {
-   if (storageActual.indexOf(dataStorage) !== -1) {
-    return false;
-   }
-   return true;
-} */
 
 function limpiarAño() {
     añoSelect = document.getElementById("año");
