@@ -161,14 +161,15 @@ function ocultarLoader() {
 
 function filtrarDatos() {
 
-
+    seccionSelect = document.getElementById("seccion");
     mostrarLoader();
+    let mensajito;
     console.log('Comienza la carga de datos... rueda gira')
     if (
         añoSelect.value == "0" ||
-        idCargo.value == "-1" ||
-        idDistritoOpt.value == "-1" ||
-        seccionSelect.value == "-1"
+        idCargo.value == "Cargo" ||
+        idDistritoOpt.value == "Distrito" ||
+        seccionSelect.value == "Seccion"
     ) {
 
         ocultarLoader();
@@ -180,7 +181,7 @@ function filtrarDatos() {
     datos.seccionId = seccionSelect.value;
     let seccionSeleccionada = seccionSelect.options[seccionSelect.selectedIndex];
     datos.seccionTxt = seccionSeleccionada.textContent;
-    let mensajito;
+    
 
     console.log(añoSelect.value)
     // Validación de combos 
