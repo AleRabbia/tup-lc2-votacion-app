@@ -1,4 +1,4 @@
-{/*  */}
+{/*  */ }
 
 var localJson;
 
@@ -11,26 +11,26 @@ document.addEventListener('DOMContentLoaded', function () {
     let mensajito;
     console.log(storageActual);
 
-    if (!storageActual){
-    
+    if (!storageActual) {
+
         mensajito = 'amarillo';
         crearMensaje(mensajito, 'No hay informes guardados para mostrar');
-    
+
     }
-    else{
-        
+    else {
+
         localJson = JSON.parse(storageActual);
         console.log(localJson);
         cargarHtml();
-    
+
     }
 
 
 });
 
 
-function cargarHtml(){
-    
+function cargarHtml() {
+
     var cont = 0;
     var cuadroInforme = document.getElementById('cuadroInformes');
     localJson.forEach(element => {
@@ -42,6 +42,8 @@ function cargarHtml(){
                 <p class="2020"> ${element.año} >${element.tipo} >Provisorio >${element.cargo}} >${element.seccion} </p>
             </td>
                 <td class="datos-generales">
+                
+                <div class="datos-div">
                     <div class="column mesas">
                         ${logos.mesas}
                             <p>Mesas Escrutadas ${element.informe.estadoRecuento.mesasTotalizadas}</p> 
@@ -54,14 +56,16 @@ function cargarHtml(){
                         ${logos.participacion}
                             <p>Participacion sobre escrutado ${element.informe.estadoRecuento.participacionPorcentaje}%</p>
                     </div><br>
+                    </div>
                 </td>
+                
                 <td id="datos-agrupacion-${cont}">
-                    
+                
                 </td>
 
             </tr>`
         element.informe.valoresTotalizadosPositivos.forEach(agrupacion => {
-            
+
             var datosAgrupacion = document.getElementById(`datos-agrupacion-${cont}`);
             datosAgrupacion.innerHTML += `<p>${agrupacion.nombreAgrupacion}</p>
             <p>${agrupacion.votosPorcentaje}%<br> ${agrupacion.votos} votos</p>
@@ -70,7 +74,7 @@ function cargarHtml(){
         })
         cont += 1;
     });
-    
+
 
 
 }
