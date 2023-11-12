@@ -87,9 +87,9 @@ h3 {
 
 .menu-list li {
     display: flex;
-    align-items: center; 
+    align-items: center;
     margin: 5px 0;
-  }
+}
 
 ul li {
     margin-right: 10px;
@@ -99,7 +99,7 @@ ul li {
 }
 
 ul li button {
-    margin-left: 10px;    
+    margin-left: 10px;
     margin-right: 10px;
     margin-top: 0;
     font-size: 12px;
@@ -107,16 +107,23 @@ ul li button {
 }
 
 #año {
-    width: 60px; /* Año */
+    width: 60px;
+    /* Año */
 }
+
 #cargo {
-    width: 300px; /* Cargo */
+    width: 300px;
+    /* Cargo */
 }
+
 #distrito {
-    width: 150px; /* Distrito */
+    width: 150px;
+    /* Distrito */
 }
+
 #seccion {
-    width: 150px; /* Sección */
+    width: 150px;
+    /* Sección */
 }
 
 a.paso {
@@ -192,7 +199,7 @@ a.informes:hover {
 
 .menu-list .right {
     margin-left: auto;
-    
+
     text-align: right;
 }
 
@@ -225,7 +232,7 @@ a.informes:hover {
 }
 
 .error {
-    
+
     font-family: 'Roboto', sans-serif;
     background-color: var(--mensaje-usuario-rojo);
     margin-bottom: 10px;
@@ -356,7 +363,7 @@ a.informe {
     flex-direction: column;
     justify-content: space-around;
     overflow-x: auto;
-    
+
 }
 
 .recuadros h2 {
@@ -381,6 +388,7 @@ a.informe {
     align-items: center;
     text-align: center;
 }
+
 /* Pie de Página */
 footer {
     color: var(--texto-footer);
@@ -389,29 +397,31 @@ footer {
     align-items: center;
     background-color: var(--fondo-Footer);
     padding: 10px;
-    
-  }
-  
-  footer img {
+
+}
+
+footer img {
     width: 120px;
     margin-left: 5px;
     margin-right: 5px;
-  
-  }
-  
-  footer p {
-    flex: 1; 
+
+}
+
+footer p {
+    flex: 1;
     color: var(--texto-footer);
     line-height: 1.5;
-  }
-  footer a {
-    color: var(--texto-footer); 
+}
+
+footer a {
+    color: var(--texto-footer);
     text-decoration: underline;
-  }
-  
-  footer a:hover {
-    color: var(--color-hover); 
-  }
+}
+
+footer a:hover {
+    color: var(--color-hover);
+}
+
 /*barra de progreso*/
 .progress {
     height: 35px;
@@ -522,7 +532,7 @@ footer {
 }
 
 .bar:nth-child(5) {
-    --bar-color:rgb(148, 0, 211);
+    --bar-color: rgb(148, 0, 211);
 }
 
 .bar:nth-child(6) {
@@ -549,7 +559,7 @@ footer {
     white-space: nowrap;
 }
 
-#loader  {
+#loader {
     display: flex;
     justify-content: center;
     margin: auto;
@@ -557,6 +567,19 @@ footer {
     text-align: center;
     font-size: 12px;
 }
+
 #loader {
-    display: none; /* Inicialmente, el loader está oculto */
-  }
+    display: none;
+    /* Inicialmente, el loader está oculto */
+}
+
+#photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+#photo img{
+    width: 60%;
+    height: 60%;
+}

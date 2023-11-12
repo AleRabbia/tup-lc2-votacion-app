@@ -154,6 +154,7 @@ function ocultarLoader() {
 
 
 async function filtrarDatos() {
+
     seccionSelect = document.getElementById("seccion");
     mostrarLoader();
     let mensajito;
@@ -165,6 +166,7 @@ async function filtrarDatos() {
         idDistritoOpt.value == "Distrito" ||
         seccionSelect.value == "Seccion"
     ) {
+
         ocultarLoader();
         mensajito = 'rojo';
         console.log("Mensaje rojo activado: Campos de los selects vacíos detectados.");
@@ -172,6 +174,10 @@ async function filtrarDatos() {
         return; // Detener la ejecución si hay campos vacíos
     }
 
+    let main = document.getElementById('contenido-principal');
+    main.style.display = "block";
+    let photo = document.getElementById('photo');
+    photo.style.display = "none";
     datos.seccionId = seccionSelect.value;
     let seccionSeleccionada = seccionSelect.options[seccionSelect.selectedIndex];
     datos.seccionTxt = seccionSeleccionada.textContent;
@@ -209,7 +215,7 @@ async function filtrarDatos() {
         console.log(error);
         mensajito = 'amarillo';
         crearMensaje(mensajito, 'La operación no se pudo completar');
-    }
+    }
 }
 
 
@@ -364,20 +370,20 @@ function agregarInforme() {
     }
 }
 
-    function limpiarAño() {
-        añoSelect = document.getElementById("año");
-        añoSelect.innerHTML = `<option disabled selected>Año</option>`;
-        cargarFetch();
-    }
-    function limpiarCargo() {
-        idCargo = document.getElementById("cargo");
-        idCargo.innerHTML = `<option disabled selected>Cargo</option>`;
-    }
-    function limpiarDistrito() {
-        idDistritoOpt = document.getElementById("distrito");
-        idDistritoOpt.innerHTML = `<option disabled selected>Distrito</option>`;
-    }
-    function limpiarSeccion() {
-        seccionSelect = document.getElementById("seccion");
-        seccionSelect.innerHTML = `<option disabled selected>Seccion</option>`;
-    }
+function limpiarAño() {
+    añoSelect = document.getElementById("año");
+    añoSelect.innerHTML = `<option disabled selected>Año</option>`;
+    cargarFetch();
+}
+function limpiarCargo() {
+    idCargo = document.getElementById("cargo");
+    idCargo.innerHTML = `<option disabled selected>Cargo</option>`;
+}
+function limpiarDistrito() {
+    idDistritoOpt = document.getElementById("distrito");
+    idDistritoOpt.innerHTML = `<option disabled selected>Distrito</option>`;
+}
+function limpiarSeccion() {
+    seccionSelect = document.getElementById("seccion");
+    seccionSelect.innerHTML = `<option disabled selected>Seccion</option>`;
+}

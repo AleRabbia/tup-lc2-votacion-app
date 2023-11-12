@@ -174,6 +174,12 @@ function filtrarDatos() {
         crearMensaje(mensajito, "Seleccione todas las opciones antes de filtrar los datos.");
         return; // Detener la ejecución si hay campos vacíos
     }
+    
+    let main = document.getElementById('contenido-principal');
+    main.style.display = "block";
+    let photo = document.getElementById('photo');
+    photo.style.display = "none";
+
     datos.seccionId = seccionSelect.value;
     let seccionSeleccionada = seccionSelect.options[seccionSelect.selectedIndex];
     datos.seccionTxt = seccionSeleccionada.textContent;
