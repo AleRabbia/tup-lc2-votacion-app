@@ -631,3 +631,8 @@ footer a:hover {
     border-radius: 5px;
     padding: 10px;   
 }
+
+#photo img {
+    width: 60%;
+    height: 60%;
+}
