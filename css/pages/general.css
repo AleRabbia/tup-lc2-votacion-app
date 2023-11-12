@@ -579,7 +579,17 @@ footer a:hover {
     align-items: center;
     text-align: center;
 }
-#photo img{
+
+#photo img {
     width: 60%;
     height: 60%;
+}
+
+#photo h1 {
+    background-color: var(--fondo-Cabecera);
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 10px;
+    
 }
