@@ -586,10 +586,9 @@ footer a:hover {
 }
 
 #photo h1 {
-    background-color: var(--fondo-Cabecera);
-    color: white;
+    background-color: #f0f0f0;
     font-weight: bold;
     border-radius: 5px;
     padding: 10px;
-    
+
 }
