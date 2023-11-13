@@ -213,9 +213,9 @@ a.informes:hover {
 }
 
 .mensajes {
+    font-family: 'Roboto', sans-serif;
     display: flex;
-    flex-direction: column;
-    margin: 20px auto;
+    justify-content: center;
     padding: 15px;
     list-style-type: none;
     width: 400px;
