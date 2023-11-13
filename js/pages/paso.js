@@ -316,7 +316,7 @@ function agregarInforme() {
 
             var dataInforme = {
                 año: datos.anioEleccion,
-                tipo: 'Generales',
+                tipo: 'PASO',
                 recuento: 'Provisorio',
                 cargo: datos.cargoTxt,
                 distrito: datos.distritoTxt,
