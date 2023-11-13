@@ -109,22 +109,22 @@ ul li button {
 
 #año {
     width: 60px;
-    /* Año */
+    cursor: pointer;
 }
 
 #cargo {
     width: 300px;
-    /* Cargo */
+    cursor: pointer;
 }
 
 #distrito {
     width: 150px;
-    /* Distrito */
+    cursor: pointer;
 }
 
 #seccion {
     width: 150px;
-    /* Sección */
+    cursor: pointer;
 }
 
 a.generales {
@@ -252,6 +252,8 @@ a.informes:hover {
 .exclamacion p {
     color: #FFffFF;
     font-weight: 200;
+    font-size: 15px;
+    padding: 10px;
 }
 
 #sec-titulo {
@@ -624,14 +626,16 @@ footer a:hover {
     align-items: center;
     text-align: center;
 }
-#photo h1 {
-    background-color: #f0f0f0;
-    font-weight: bold;
-    border-radius: 5px;
-    padding: 10px;   
-}
 
 #photo img {
     width: 60%;
     height: 60%;
+}
+
+#photo h1 {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 10px;
+
 }

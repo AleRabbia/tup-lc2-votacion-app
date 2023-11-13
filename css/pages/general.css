@@ -108,22 +108,22 @@ ul li button {
 
 #año {
     width: 60px;
-    /* Año */
+    cursor: pointer;
 }
 
 #cargo {
     width: 300px;
-    /* Cargo */
+    cursor: pointer;
 }
 
 #distrito {
     width: 150px;
-    /* Distrito */
+    cursor: pointer;
 }
 
 #seccion {
     width: 150px;
-    /* Sección */
+    cursor: pointer;
 }
 
 a.paso {

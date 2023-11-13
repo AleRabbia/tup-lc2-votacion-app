@@ -39,7 +39,7 @@ function cargarHtml() {
             ${provincias[element.distritoId]}
             </td>
             <td id="titulo">Elecciones ${element.año}| ${element.tipo} <br><br>
-                <p class="2020"> ${element.año} >${element.tipo} >Provisorio >${element.cargo}} >${element.seccion} </p>
+                <p class="2020"> ${element.año} >${element.tipo} >Provisorio >${element.cargo} >${element.distrito} >${element.seccion} </p>
             </td>
                 <td class="datos-generales">
                 

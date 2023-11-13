@@ -22,7 +22,6 @@ const datos = {
     seccionTxt: ''
 };
 
-
 document.addEventListener("DOMContentLoaded", function () {
     cargarFetch();
 });
@@ -93,7 +92,6 @@ function cargarDistrito() {
     let cargoSeleccionado = idCargo.options[idCargo.selectedIndex];
     datos.cargoTxt = cargoSeleccionado.textContent;
 
-
     datosJSON.forEach(eleccion => {
         if (eleccion.IdEleccion == tipoEleccion) {
             eleccion.Cargos.forEach((cargo) => {
@@ -151,7 +149,6 @@ function ocultarLoader() {
     const loader = document.getElementById("loader");
     loader.style.display = "none";
 }
-
 
 async function filtrarDatos() {
 
@@ -271,7 +268,6 @@ function crearMensaje(mensajito, texto) {
         }, 4000)
     }
 }
-
 
 function rellenarDatos() {
     const mesa = document.getElementById("mesaEscrutada");
