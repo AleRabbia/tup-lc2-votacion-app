@@ -13,7 +13,6 @@ p {
     color: var(--textos);
 }
 
-
 :root {
   --magenta: #ee3d8f;
   --celeste: #37bbed;
@@ -47,6 +46,7 @@ p {
   --mensaje-usuario-verde: #28a745;
   --mensaje-usuario-rojo: #dc3545;
 }
+
 h1 {
   font-size: 26px;
   color: var(--titulos);
@@ -62,6 +62,7 @@ h3 {
   font-size: 18px;
   color: var(--titulos);
 }
+
 /* Cabecera */
 .header-page {
   padding: 10px;
@@ -84,6 +85,7 @@ h3 {
   list-style-type: none;
   margin-right: 10px;
 }
+
 .menu-list li {
   display: flex;
   align-items: center;
@@ -124,6 +126,7 @@ ul li button {
   width: 150px;
   cursor: pointer;
 }
+
 .inicio {
   padding: 5px 10px;
   border-radius: 5px;
@@ -135,6 +138,7 @@ ul li button {
   border: none;
   cursor: pointer;
 }
+
 .inicio:hover {
   background-color: #727272;
 }
@@ -152,6 +156,7 @@ a.informes {
 a.informes:hover {
   background-color: #727272;
 }
+
 .desplegable-list {
   background: transparent;
   color: var(--celeste);
@@ -175,6 +180,7 @@ a.informes:hover {
 .clearfix {
   clear: both;
 }
+
 .menu-list .right {
   margin-left: auto;
 
@@ -206,6 +212,7 @@ a.informes:hover {
   border-radius: 10px;
   display: flex;
 }
+
 .error {
   background-color: var(--mensaje-usuario-rojo);
   margin-bottom: 10px;
@@ -232,6 +239,7 @@ a.informes:hover {
   font-size: 15px;
   padding: 10px;
 }
+
 #sec-titulo {
   display: flex;
   justify-content: space-between;
@@ -242,7 +250,6 @@ a.informes:hover {
   font-size: 14px;
   color: var(--celeste);
 }
-
 
 /* Logo */
 .logo {
@@ -264,6 +271,7 @@ a.informes:hover {
   color: white;
   font-size: 14px;
 }
+
 .button-agr-informe {
   background-color: var(--gris-claro);
   text-align: center;
@@ -293,6 +301,7 @@ a.informe {
   font-size: 14px;
   color: white;
 }
+
 .column.mesas {
   background-color: var(--celeste);
   border-radius: 10px;
@@ -307,6 +316,7 @@ a.informe {
   background-color: var(--morado);
   border-radius: 10px;
 }
+
 /*Section recuadros */
 .recuadros {
   display: grid;
@@ -366,14 +376,12 @@ footer {
   align-items: center;
   background-color: var(--fondo-Footer);
   padding: 10px;
-
 }
 
 footer img {
   width: 120px;
   margin-left: 5px;
   margin-right: 5px;
-
 }
 
 footer p {
@@ -390,6 +398,7 @@ footer a {
 footer a:hover {
   color: var(--color-hover);
 }
+
 /*barra de progreso*/
 .progress {
   height: 35px;
@@ -420,6 +429,7 @@ footer a:hover {
   font-family: sans-serif;
   width: var(--chart-width);
 }
+
 .chart-wrap .title {
   font-weight: bold;
   padding: 1.8em 0 2.8em;
@@ -448,6 +458,7 @@ footer a:hover {
   border-left: 2px solid var(--grid-color);
   font-size: 10px;
 }
+
 /* posicionamos el % del gráfico*/
 .chart-wrap .grid::before {
   font-size: 0.8em;
@@ -472,6 +483,7 @@ footer a:hover {
 .chart-wrap.horizontal .grid::after {
   transform: rotate(90deg);
 }
+
 .chart-wrap .bar {
   width: var(--bar-value);
   height: var(--bar-thickness);
@@ -560,11 +572,9 @@ footer a:hover {
   --bar-color: rgb(64, 64, 64);
 }
 
-
 .chart-wrap .bar:hover {
   opacity: 0.7;
 }
-
 
 .chart-wrap .bar::after {
   content: attr(data-name);
@@ -605,5 +615,4 @@ footer a:hover {
   font-weight: bold;
   border-radius: 5px;
   padding: 10px;
-
 }
