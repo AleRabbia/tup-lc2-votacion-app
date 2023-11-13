@@ -1,15 +1,8 @@
-{/*  */ }
-
 var localJson;
 
-
 document.addEventListener('DOMContentLoaded', function () {
-
-
-
     var storageActual = localStorage.getItem('dataInforme');
     let mensajito;
-    console.log(storageActual);
 
     if (!storageActual) {
 
@@ -24,10 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
         cargarHtml();
 
     }
-
-
 });
-
 
 function cargarHtml() {
 
@@ -74,12 +64,7 @@ function cargarHtml() {
         })
         cont += 1;
     });
-
-
-
 }
-
-
 
 function crearMensaje(mensajito, texto) {
 
@@ -104,4 +89,3 @@ function crearMensaje(mensajito, texto) {
         }, 4000)
     }
 }
-
